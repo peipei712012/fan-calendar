@@ -1,105 +1,895 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>粉絲日誌</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui, sans-serif;}
-body{background:#f8f4f9;color:#333;padding-bottom:80px;}
+<html lang="zh-Hant">
 
-/* 愛心飄動動畫 */
-.heart{position:fixed;pointer-events:none;animation:float 4s ease-out forwards;z-index:99;}
-@keyframes float{
-  0%{opacity:1;transform:translateY(0) scale(1);}
-  100%{opacity:0;transform:translateY(-400px) scale(0.6);}
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,
+             initial-scale=1.0,
+             viewport-fit=cover">
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes">
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default">
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="兔飽飽">
+
+<meta
+    name="theme-color"
+    content="#fff4f8">
+
+<title>豆包 × 兔飽飽</title>
+
+
+<style>
+
+/* =================================
+   基本設定
+================================= */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;}
-.logo{width:42px;height:42px;border-radius:16px;overflow:hidden;}
-.logo img{width:100%;height:100%;object-fit:cover;}
+body {
 
-.hero-card{margin:0 20px;border-radius:24px;background:linear-gradient(135deg,#e9d8f4,#f6e8f0);padding:24px;position:relative;box-shadow:0 6px 18px #00000012;}
-.hero-character{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;overflow:hidden;}
-.hero-character img{width:100%;height:100%;object-fit:cover;}
-.hero-card h1{font-size:22px;margin-bottom:8px;}
-.hero-card p{color:#666;font-size:14px;line-height:1.6;}
+    margin: 0;
 
-.section{margin:24px 20px;}
-.section-title{font-size:18px;margin-bottom:14px;font-weight:600;}
-.card-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.small-card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 3px 10px #00000008;}
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "PingFang TC",
+        "Noto Sans TC",
+        sans-serif;
 
-.today-quote{margin:24px 20px;background:#fff;border-radius:18px;padding:20px;box-shadow:0 3px 10px #00000008;}
+    background:
+        radial-gradient(
+            circle at 10% 5%,
+            #ffe0ec 0,
+            transparent 28%
+        ),
 
-/* 底部導航 */
-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:12px 0;box-shadow:0 -2px 12px #00000008;}
-.nav-item{display:flex;flex-direction:column;align-items:center;font-size:12px;color:#777;gap:4px;}
-.nav-item span{width:21px;height:21px;border-radius:50%;overflow:hidden;display:inline-block;}
-.nav-item span img{width:100%;height:100%;object-fit:cover;}
-.nav-item.active{color:#b878c7;font-weight:500;}
-</style>
-</head>
-<body>
-<!-- 頁首 -->
-<header>
-  <div class="logo">
-    <img src="https://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/30011001309440489110220400404011~tplv-a9rns2rl98-image.image" alt="頭像">
-  </div>
-  <div>粉絲日誌</div>
-</header>
+        radial-gradient(
+            circle at 90% 15%,
+            #e8ddff 0,
+            transparent 25%
+        ),
 
-<!-- Hero主卡片 -->
-<div class="hero-card">
-  <div class="hero-character">
-    <img src="https://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/30011001309440489110220400404011~tplv-a9rns2rl98-image.image" alt="頭像">
-  </div>
-  <h1>歡迎來到專屬日誌 ✨</h1>
-  <p>記錄每一次相遇、每一個重要里程碑，珍藏所有美好的瞬間。點擊畫面會飄出愛心喔。</p>
-</div>
+        linear-gradient(
+            180deg,
+            #fff8fb 0%,
+            #f7f3ff 100%
+        );
 
-<!-- 里程碑區塊 -->
-<div class="section">
-  <h2 class="section-title">📌 里程碑</h2>
-  <div class="card-wrap">
-    <div class="small-card">第一次見面</div>
-    <div class="small-card">舞台紀念日</div>
-    <div class="small-card">生日</div>
-    <div class="small-card">專輯發行</div>
-  </div>
-</div>
+    color: #463c4d;
 
-<!-- 今日小語 -->
-<div class="today-quote">
-  <h3>💌 今日小語</h3>
-  <p>保持熱愛，奔赴下一場山海。</p>
-</div>
+    min-height: 100vh;
 
-<!-- 底部導航 -->
-<nav>
-  <div class="nav-item">首頁</div>
-  <div class="nav-item active">
-    <span>
-      <img src="https://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/30011001309440489110220400404011~tplv-a9rns2rl98-image.image" alt="頭像">
-    </span>
-    日誌
-  </div>
-  <div class="nav-item">相簿</div>
-  <div class="nav-item">設定</div>
-</nav>
+    padding-bottom: 105px;
+}
 
-<script>
-// 點擊飄愛心
-document.body.addEventListener('click',(e)=>{
-  const heart = document.createElement('div');
-  heart.classList.add('heart');
-  heart.innerText = '❤️';
-  heart.style.left = e.clientX + 'px';
-  heart.style.top = e.clientY + 'px';
-  heart.style.fontSize = '24px';
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),4000);
-})
-</script>
-</body>
-</html>
+
+/* =================================
+   HEADER
+================================= */
+
+.header {
+
+    padding:
+        24px
+        20px
+        10px;
+
+}
+
+.app-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+.title-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.logo {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 16px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffb6cf,
+            #d9b9ff
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 26px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(210,150,190,.25);
+
+}
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.title-text h1 {
+
+    margin: 0;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+}
+
+.title-text p {
+
+    margin:
+        3px
+        0
+        0;
+
+    font-size: 12px;
+
+    color: #9a8e9f;
+
+}
+
+.header-bunny {
+
+    font-size: 32px;
+
+}
+
+
+/* =================================
+   MAIN
+================================= */
+
+.container {
+
+    padding:
+        10px
+        16px
+        0;
+
+    max-width: 600px;
+
+    margin: auto;
+
+}
+
+
+/* =================================
+   分頁
+================================= */
+
+.page {
+
+    display: none;
+
+    animation:
+        pageIn .28s ease;
+
+}
+
+.page.active {
+
+    display: block;
+
+}
+
+@keyframes pageIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 30px;
+
+    padding:
+        25px
+        22px
+        22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            rgba(255,237,246,.92)
+        );
+
+    box-shadow:
+
+        0 14px 35px
+        rgba(185,145,180,.18),
+
+        inset 0 1px
+        rgba(255,255,255,.9);
+
+    border:
+        1px solid
+        rgba(255,255,255,.8);
+
+}
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+
+    height: 170px;
+
+    right: -60px;
+
+    top: -60px;
+
+    background: #ffd4e5;
+
+    border-radius: 50%;
+
+    opacity: .55;
+
+}
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+
+    height: 110px;
+
+    left: -50px;
+
+    bottom: -50px;
+
+    background: #e5d8ff;
+
+    border-radius: 50%;
+
+    opacity: .5;
+
+}
+
+.hero-top {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.hero-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    background: #fff;
+
+    border-radius: 30px;
+
+    padding:
+        7px
+        12px;
+
+    font-size: 12px;
+
+    color: #9a738a;
+
+    box-shadow:
+        0 5px 15px
+        rgba(160,120,150,.08);
+
+}
+
+.hero-character {
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    overflow:hidden;
+}
+.hero-character img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-main {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 12px;
+
+}
+
+.hero-small {
+
+    font-size: 14px;
+
+    color: #8f8292;
+
+}
+
+.day-number {
+
+    font-size: 68px;
+
+    line-height: 1;
+
+    letter-spacing: -4px;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ed75a7,
+            #a66fe3
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    margin:
+        5px
+        0;
+
+}
+
+.day-title {
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #655768;
+
+}
+
+.start-date {
+
+    margin-top: 13px;
+
+    font-size: 12px;
+
+    color: #9b8d9f;
+
+}
+
+
+/* =================================
+   週年
+================================= */
+
+.anniversary-badge {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding:
+        10px
+        14px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0c9,
+            #ffd8e8
+        );
+
+    color: #a66a82;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-align: center;
+
+}
+
+.anniversary-badge.show {
+
+    display: block;
+
+}
+
+
+/* =================================
+   PROGRESS
+================================= */
+
+.progress-box {
+
+    margin-top: 20px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+.progress-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 12px;
+
+    color: #8f8292;
+
+    margin-bottom: 7px;
+
+}
+
+.progress-bar {
+
+    height: 10px;
+
+    background: #f0e8f0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+.progress-fill {
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff9fc1,
+            #c29af2
+        );
+
+    transition:
+        width .6s ease;
+
+}
+
+
+/* =================================
+   CARD
+================================= */
+
+.card {
+
+    background:
+        rgba(255,255,255,.86);
+
+    border-radius: 25px;
+
+    padding: 20px;
+
+    margin-top: 15px;
+
+    box-shadow:
+        0 10px 28px
+        rgba(160,130,170,.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,.9);
+
+}
+
+.card-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+
+}
+
+.card-title-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+.card-icon {
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fff0f6;
+
+    font-size: 18px;
+
+}
+
+.card-title h2 {
+
+    margin: 0;
+
+    font-size: 16px;
+
+}
+
+.card-title span {
+
+    font-size: 11px;
+
+    color: #a294a5;
+
+}
+
+
+/* =================================
+   NEXT MILESTONE
+================================= */
+
+.next-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f6,
+            #f4eeff
+        );
+
+}
+
+.next-type {
+
+    font-size: 12px;
+
+    color: #a07895;
+
+    margin-bottom: 3px;
+
+}
+
+.next-number {
+
+    font-size: 34px;
+
+    font-weight: 900;
+
+    color: #b06fa4;
+
+}
+
+.next-desc {
+
+    font-size: 13px;
+
+    color: #8f8292;
+
+}
+
+
+/* =================================
+   CALENDAR
+================================= */
+
+.calendar-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+
+}
+
+.month-title {
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+}
+
+.month-btn {
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #f8f2f8;
+
+    font-size: 17px;
+
+    color: #806f82;
+
+}
+
+.weekdays,
+.calendar {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 5px;
+
+}
+
+.weekday {
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color: #aaa0ad;
+
+    padding-bottom: 4px;
+
+}
+
+.day {
+
+    min-height: 47px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    font-size: 13px;
+
+}
+
+.day.empty {
+
+    opacity: 0;
+
+}
+
+.day.today {
+
+    background: #fff0f6;
+
+    box-shadow:
+        inset 0 0 0 2px
+        #f5b1cd;
+
+    font-weight: 800;
+
+}
+
+.day.future {
+
+    color: #cfc7d0;
+
+}
+
+
+/* =================================
+   50天
+================================= */
+
+.day.milestone {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe0ec,
+            #eadcff
+        );
+
+    font-weight: 800;
+
+}
+
+.day.milestone .milestone-text {
+
+    font-size: 9px;
+
+    color: #bd6e9c;
+
+    margin-top: 2px;
+
+}
+
+.day.milestone::after {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: 1px;
+
+    right: 4px;
+
+    font-size: 8px;
+
+    color: #d895b6;
+
+}
+
+
+/* =================================
+   週年
+================================= */
+
+.day.anniversary {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe8a8,
+            #ffd2e5
+        );
+
+    box-shadow:
+        0 0 0 2px
+        #f0b05f;
+
+    font-weight: 900;
+
+}
+
+.day.anniversary .milestone-text {
+
+    color: #a65e70;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+}
+
+
+/* =================================
+   里程碑列表
+================================= */
+
+.milestone-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.milestone-item {
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 13px;
+
+    border-radius: 17px;
+
+    background: #faf7fb;
+
+}
+
+.milestone-item.anniversary-item {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8df,
+            #fff0f5
+        );
+
+}
+
+.milestone
