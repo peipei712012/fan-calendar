@@ -896,4 +896,2539 @@ body {
 
     display: flex;
 
-    align-items:
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+
+    margin-right: 12px;
+
+}
+
+.anniversary-item .milestone-icon {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe49b,
+            #ffc8df
+        );
+
+}
+
+.milestone-info {
+
+    flex: 1;
+
+}
+
+.milestone-info strong {
+
+    display: block;
+
+    font-size: 14px;
+
+}
+
+.milestone-info small {
+
+    color: #a095a3;
+
+    font-size: 11px;
+
+}
+
+.done {
+
+    font-size: 18px;
+
+}
+
+
+/* =================================
+   今日粉絲小語
+================================= */
+
+.quote-hero {
+
+    text-align: center;
+
+    padding:
+        28px
+        20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f7,
+            #f2ecff
+        );
+
+}
+
+.quote-icon {
+
+    font-size: 45px;
+
+}
+
+.quote-day {
+
+    margin-top: 8px;
+
+    color: #a07895;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+.quote-main {
+
+    margin-top: 18px;
+
+    font-size: 21px;
+
+    line-height: 1.7;
+
+    font-weight: 800;
+
+    color: #72576d;
+
+}
+
+.quote-sub {
+
+    margin-top: 12px;
+
+    color: #9b8d9f;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =================================
+   今日應援
+================================= */
+
+.support-card {
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8df,
+            #fff0f6
+        );
+
+}
+
+.support-title {
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+}
+
+.support-text {
+
+    margin-top: 10px;
+
+    color: #916f83;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =================================
+   兔飽飽小天地
+================================= */
+
+.bunny-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4f8,
+            #f1edff
+        );
+
+    text-align: center;
+
+    padding:
+        28px
+        18px;
+
+}
+
+.big-bunny {
+
+    font-size: 65px;
+
+    margin-bottom: 4px;
+
+}
+
+.bunny-title {
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+}
+
+.bunny-text {
+
+    margin-top: 8px;
+
+    color: #918595;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+}
+
+.slogan {
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,.72);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #a56d91;
+
+}
+
+
+/* =================================
+   粉絲資料
+================================= */
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+}
+
+.info-box {
+
+    padding: 17px 12px;
+
+    border-radius: 18px;
+
+    background: #faf7fb;
+
+    text-align: center;
+
+}
+
+.info-icon {
+
+    font-size: 25px;
+
+}
+
+.info-number {
+
+    margin-top: 5px;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    color: #ae6f9d;
+
+}
+
+.info-label {
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color: #9c919f;
+
+}
+
+
+/* =================================
+   兔飽飽口號
+================================= */
+
+.rabbit-message {
+
+    text-align: center;
+
+    padding: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7efff,
+            #fff0f7
+        );
+
+}
+
+.rabbit-message-title {
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+}
+
+.rabbit-message-text {
+
+    margin-top: 9px;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    color: #866c82;
+
+}
+
+
+/* =================================
+   底部導覽
+================================= */
+
+.bottom-nav {
+
+    position: fixed;
+
+    z-index: 50;
+
+    left: 12px;
+
+    right: 12px;
+
+    bottom:
+        max(
+            12px,
+            env(safe-area-inset-bottom)
+        );
+
+    height: 67px;
+
+    background:
+        rgba(255,255,255,.91);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.8);
+
+    border-radius: 23px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(110,80,120,.18);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    padding: 6px;
+
+}
+
+.nav-btn {
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 18px;
+
+    color: #aaa0ad;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 2px;
+
+}
+
+.nav-btn span {
+
+    font-size: 21px;
+
+}
+
+.nav-btn.active {
+
+    background: #fff0f6;
+
+    color: #bc6d98;
+
+    font-weight: 700;
+
+}
+
+
+/* =================================
+   愛心
+================================= */
+
+.heart {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    animation:
+        floatUp 4s linear forwards;
+
+    z-index: 100;
+
+}
+
+@keyframes floatUp {
+
+    0% {
+
+        transform:
+            translateY(0)
+            scale(.8);
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-160px)
+            scale(1.3);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =================================
+   電腦版
+================================= */
+
+@media (min-width: 700px) {
+
+    .container {
+
+        max-width: 650px;
+
+    }
+
+    .bottom-nav {
+
+        max-width: 500px;
+
+        left: 50%;
+
+        right: auto;
+
+        width: 500px;
+
+        transform:
+            translateX(-50%);
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header class="header">
+
+    <div class="app-title">
+
+        <div class="title-left">
+
+            <div class="logo">
+                🫘
+            </div>
+
+            <div class="title-text">
+
+                <h1>
+                    豆包 × 兔飽飽
+                </h1>
+
+                <p>
+                    我們一起走過的每一天 💗
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-bunny">
+            🐰
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =================================
+     🫘 第一頁：日曆
+================================= -->
+
+<section
+    class="page active"
+    id="page-calendar">
+
+
+    <!-- 今日天數 -->
+
+    <section class="hero">
+
+        <div class="hero-top">
+
+            <div class="hero-label">
+                🐰 兔飽飽粉絲日誌
+            </div>
+
+            <div class="hero-character">
+                🫘
+            </div>
+
+        </div>
+
+
+        <div class="hero-main">
+
+            <div class="hero-small">
+                今天和豆包一起走過
+            </div>
+
+
+            <div
+                class="day-number"
+                id="fanDay">
+
+                0
+
+            </div>
+
+
+            <div class="day-title">
+
+                粉絲第幾天 💕
+
+            </div>
+
+
+            <div class="start-date">
+
+                🫘 始於 2026.08.04
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="anniversary-badge"
+            id="anniversaryBadge">
+
+        </div>
+
+
+        <div class="progress-box">
+
+            <div class="progress-info">
+
+                <span id="progressText">
+                    距離下一個紀念日
+                </span>
+
+                <span id="progressPercent">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                    style="width:0%">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 下一個紀念日 -->
+
+    <section class="card next-card">
+
+        <div class="card-title">
+
+            <div class="card-title-left">
+
+                <div class="card-icon">
+                    🎀
+                </div>
+
+                <h2>
+                    下一個紀念日
+                </h2>
+
+            </div>
+
+            <span>
+                豆包 × 兔飽飽
+            </span>
+
+        </div>
+
+
+        <div
+            class="next-type"
+            id="nextType">
+
+            下一個50天里程碑
+
+        </div>
+
+
+        <div
+            class="next-number"
+            id="nextMilestone">
+
+            50 天
+
+        </div>
+
+
+        <div
+            class="next-desc"
+            id="nextText">
+
+            再一起走一段，就到下一個紀念日啦 💗
+
+        </div>
+
+    </section>
+
+
+    <!-- 月曆 -->
+
+    <section class="card">
+
+        <div class="calendar-header">
+
+            <button
+                class="month-btn"
+                onclick="changeMonth(-1)">
+
+                ‹
+
+            </button>
+
+
+            <div
+                class="month-title"
+                id="monthTitle">
+
+            </div>
+
+
+            <button
+                class="month-btn"
+                onclick="changeMonth(1)">
+
+                ›
+
+            </button>
+
+        </div>
+
+
+        <div class="weekdays">
+
+            <div class="weekday">日</div>
+            <div class="weekday">一</div>
+            <div class="weekday">二</div>
+            <div class="weekday">三</div>
+            <div class="weekday">四</div>
+            <div class="weekday">五</div>
+            <div class="weekday">六</div>
+
+        </div>
+
+
+        <div
+            class="calendar"
+            id="calendar">
+
+        </div>
+
+    </section>
+
+
+    <!-- 簡單里程碑預覽 -->
+
+    <section class="card">
+
+        <div class="card-title">
+
+            <div class="card-title-left">
+
+                <div class="card-icon">
+                    💗
+                </div>
+
+                <h2>
+                    近期里程碑
+                </h2>
+
+            </div>
+
+            <span>
+                點下方 💗 查看全部
+            </span>
+
+        </div>
+
+
+        <div
+            class="milestone-list"
+            id="homeMilestoneList">
+
+        </div>
+
+    </section>
+
+
+</section>
+
+
+
+<!-- =================================
+     💗 第二頁：今日粉絲小語
+================================= -->
+
+<section
+    class="page"
+    id="page-blessing">
+
+
+    <section class="card quote-hero">
+
+        <div class="quote-icon">
+            💕
+        </div>
+
+
+        <div
+            class="quote-day"
+            id="quoteDay">
+
+            今天是粉絲第 1 天
+
+        </div>
+
+
+        <div
+            class="quote-main"
+            id="quoteMain">
+
+            每一天的喜歡，都值得被好好記住。
+
+        </div>
+
+
+        <div
+            class="quote-sub"
+            id="quoteSub">
+
+            豆包 × 兔飽飽<br>
+            今天也一起開開心心走下去吧 🫘🐰
+
+        </div>
+
+    </section>
+
+
+
+    <section class="card support-card">
+
+        <div class="support-title">
+            🫘 今日應援小語
+        </div>
+
+
+        <div
+            class="support-text"
+            id="supportText">
+
+            豆你開心，包你長紅。<br>
+            今天也把最好的祝福送給豆包 💗
+
+        </div>
+
+    </section>
+
+
+
+    <section class="card">
+
+        <div class="card-title">
+
+            <div class="card-title-left">
+
+                <div class="card-icon">
+                    ✨
+                </div>
+
+                <h2>
+                    今天的小任務
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="rabbit-message">
+
+            <div class="rabbit-message-title">
+                🐰 兔飽飽今日任務
+            </div>
+
+
+            <div
+                class="rabbit-message-text"
+                id="dailyTask">
+
+                今天也記得開心追豆包一下 ✨
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</section>
+
+
+
+<!-- =================================
+     🐰 第三頁：兔飽飽小天地
+================================= -->
+
+<section
+    class="page"
+    id="page-bunny">
+
+
+    <section class="card bunny-card">
+
+        <div class="big-bunny">
+            🐰
+        </div>
+
+
+        <div class="bunny-title">
+            兔飽飽小天地
+        </div>
+
+
+        <div class="bunny-text">
+
+            這裡是屬於豆包 × 兔飽飽的小角落。<br>
+            把喜歡、紀念日和每一個重要時刻收藏起來 ✨
+
+        </div>
+
+
+        <div class="slogan">
+
+            🫘 豆你開心　🐰 包你長紅
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 粉絲資料 -->
+
+    <section class="card">
+
+        <div class="card-title">
+
+            <div class="card-title-left">
+
+                <div class="card-icon">
+                    💗
+                </div>
+
+                <h2>
+                    我們的粉絲紀錄
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    🫘
+                </div>
+
+                <div
+                    class="info-number"
+                    id="bunnyFanDay">
+
+                    0
+
+                </div>
+
+                <div class="info-label">
+                    今天是第幾天
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    💗
+                </div>
+
+                <div
+                    class="info-number"
+                    id="bunnyMilestoneCount">
+
+                    0
+
+                </div>
+
+                <div class="info-label">
+                    已完成50天里程碑
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    🎂
+                </div>
+
+                <div
+                    class="info-number"
+                    id="bunnyYearCount">
+
+                    0
+
+                </div>
+
+                <div class="info-label">
+                    已完成週年
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    ✨
+                </div>
+
+                <div
+                    class="info-number"
+                    id="bunnyNextDay">
+
+                    50
+
+                </div>
+
+                <div class="info-label">
+                    下一個紀念日
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 專屬宣言 -->
+
+    <section class="card rabbit-message">
+
+        <div class="rabbit-message-title">
+            🐰 兔飽飽的專屬宣言
+        </div>
+
+
+        <div class="rabbit-message-text">
+
+            喜歡不是一天兩天，<br>
+
+            是把好多好多天，<br>
+
+            慢慢變成值得收藏的回憶。💗<br><br>
+
+            🫘 豆包 × 🐰 兔飽飽<br>
+
+            一起走過的每一天，都算數。
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 里程碑 -->
+
+    <section class="card">
+
+        <div class="card-title">
+
+            <div class="card-title-left">
+
+                <div class="card-icon">
+                    🎀
+                </div>
+
+                <h2>
+                    完整里程碑
+                </h2>
+
+            </div>
+
+            <span>
+                50天＋週年
+            </span>
+
+        </div>
+
+
+        <div
+            class="milestone-list"
+            id="milestoneList">
+
+        </div>
+
+    </section>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =================================
+     底部導覽
+================================= -->
+
+<nav class="bottom-nav">
+
+
+    <button
+        class="nav-btn active"
+        id="navCalendar"
+        onclick="showPage('calendar')">
+
+        <span>
+            🫘
+        </span>
+
+        日曆
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        id="navBlessing"
+        onclick="showPage('blessing')">
+
+        <span>
+            💗
+        </span>
+
+        今日小語
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        id="navBunny"
+        onclick="showPage('bunny')">
+
+        <span>
+            🐰
+        </span>
+
+        兔飽飽
+
+    </button>
+
+
+</nav>
+
+
+
+<script>
+
+
+/* =================================
+   基本設定
+================================= */
+
+const startDate =
+    new Date(
+        "2026-08-04T00:00:00"
+    );
+
+
+const MILESTONE_INTERVAL = 50;
+
+
+const ANNIVERSARY_INTERVAL = 365;
+
+
+let currentMonth =
+    new Date();
+
+
+let currentYear =
+    currentMonth.getFullYear();
+
+
+let currentMonthIndex =
+    currentMonth.getMonth();
+
+
+
+/* =================================
+   粉絲天數
+================================= */
+
+function getFanDay(date) {
+
+    const start =
+        new Date(startDate);
+
+
+    const target =
+        new Date(date);
+
+
+    start.setHours(0,0,0,0);
+
+
+    target.setHours(0,0,0,0);
+
+
+    return Math.floor(
+
+        (
+            target - start
+        ) /
+
+        (
+            1000 *
+            60 *
+            60 *
+            24
+        )
+
+    ) + 1;
+
+}
+
+
+
+/* =================================
+   週年
+================================= */
+
+function isAnniversary(days) {
+
+    return (
+        days > 0 &&
+        days % ANNIVERSARY_INTERVAL === 0
+    );
+
+}
+
+
+
+/* =================================
+   下一個50天
+================================= */
+
+function getNext50Day(days) {
+
+    let next =
+        Math.ceil(
+            days / MILESTONE_INTERVAL
+        ) *
+        MILESTONE_INTERVAL;
+
+
+    if (
+        days % MILESTONE_INTERVAL === 0
+    ) {
+
+        next +=
+            MILESTONE_INTERVAL;
+
+    }
+
+
+    return next;
+
+}
+
+
+
+/* =================================
+   下一個週年
+================================= */
+
+function getNextAnniversary(days) {
+
+    return (
+        Math.floor(
+            days /
+            ANNIVERSARY_INTERVAL
+        ) + 1
+    )
+    *
+    ANNIVERSARY_INTERVAL;
+
+}
+
+
+
+/* =================================
+   切換三個頁面
+================================= */
+
+function showPage(pageName) {
+
+
+    /*
+       所有頁面先隱藏
+    */
+
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            page => {
+
+                page.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    /*
+       導覽按鈕取消 active
+    */
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(
+            button => {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    /*
+       顯示指定頁面
+    */
+
+    const page =
+        document.getElementById(
+            "page-" +
+            pageName
+        );
+
+
+    if (page) {
+
+        page.classList.add(
+            "active"
+        );
+
+    }
+
+
+    /*
+       對應按鈕亮起
+    */
+
+    const nav =
+        document.getElementById(
+            "nav" +
+            pageName.charAt(0).toUpperCase() +
+            pageName.slice(1)
+        );
+
+
+    if (nav) {
+
+        nav.classList.add(
+            "active"
+        );
+
+    }
+
+
+    /*
+       回到頁面最上方
+    */
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* =================================
+   今日資訊
+================================= */
+
+function updateToday() {
+
+
+    const today =
+        new Date();
+
+
+    const days =
+        getFanDay(today);
+
+
+    /*
+       主畫面
+    */
+
+    document.getElementById(
+        "fanDay"
+    ).textContent =
+        days;
+
+
+    /*
+       兔飽飽頁面
+    */
+
+    document.getElementById(
+        "bunnyFanDay"
+    ).textContent =
+        days;
+
+
+    /*
+       週年
+    */
+
+    const anniversaryBadge =
+        document.getElementById(
+            "anniversaryBadge"
+        );
+
+
+    if (
+        isAnniversary(days)
+    ) {
+
+
+        const year =
+            days /
+            ANNIVERSARY_INTERVAL;
+
+
+        anniversaryBadge.innerHTML =
+
+            "🎂 今天是第 " +
+            year +
+            " 週年！　💗";
+
+
+        anniversaryBadge.classList.add(
+            "show"
+        );
+
+
+    } else {
+
+        anniversaryBadge.classList.remove(
+            "show"
+        );
+
+    }
+
+
+
+    /*
+       下一個紀念日
+    */
+
+    const next50 =
+        getNext50Day(days);
+
+
+    const nextYear =
+        getNextAnniversary(days);
+
+
+    let nextDay;
+
+    let nextType;
+
+    let previousDay;
+
+
+    if (
+        nextYear <
+        next50
+    ) {
+
+        nextDay =
+            nextYear;
+
+        nextType =
+            "🎂 下一個週年";
+
+        previousDay =
+            nextYear -
+            ANNIVERSARY_INTERVAL;
+
+    }
+
+    else {
+
+        nextDay =
+            next50;
+
+        nextType =
+            "💗 下一個50天里程碑";
+
+        previousDay =
+            next50 -
+            MILESTONE_INTERVAL;
+
+    }
+
+
+    const remaining =
+        nextDay -
+        days;
+
+
+    /*
+       進度
+    */
+
+    let progress =
+        (
+            (days - previousDay) /
+            (nextDay - previousDay)
+        )
+        *
+        100;
+
+
+    progress =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                progress
+            )
+        );
+
+
+    document.getElementById(
+        "nextType"
+    ).textContent =
+        nextType;
+
+
+    document.getElementById(
+        "nextMilestone"
+    ).textContent =
+        nextDay +
+        " 天";
+
+
+    document.getElementById(
+        "nextText"
+    ).textContent =
+
+        "再 " +
+        remaining +
+        " 天，就到下一個紀念日啦 💗";
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        progress +
+        "%";
+
+
+    document.getElementById(
+        "progressPercent"
+    ).textContent =
+        Math.round(
+            progress
+        ) +
+        "%";
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+
+        "距離 " +
+        nextDay +
+        " 天";
+
+
+    /*
+       計算已完成數量
+    */
+
+    const milestoneCount =
+        Math.floor(
+            days /
+            MILESTONE_INTERVAL
+        );
+
+
+    const yearCount =
+        Math.floor(
+            days /
+            ANNIVERSARY_INTERVAL
+        );
+
+
+    document.getElementById(
+        "bunnyMilestoneCount"
+    ).textContent =
+        milestoneCount;
+
+
+    document.getElementById(
+        "bunnyYearCount"
+    ).textContent =
+        yearCount;
+
+
+    document.getElementById(
+        "bunnyNextDay"
+    ).textContent =
+        nextDay;
+
+
+    /*
+       今日小語
+    */
+
+    updateBlessing(days);
+
+
+    /*
+       里程碑
+    */
+
+    renderMilestones(days);
+
+}
+
+
+
+/* =================================
+   今日粉絲小語
+================================= */
+
+const fanQuotes = [
+
+    [
+        "每一天的喜歡，都值得被好好記住。",
+        "今天也一起開開心心走下去吧 🫘🐰",
+        "豆你開心，包你長紅。💗"
+    ],
+
+    [
+        "喜歡不是一天兩天，而是好多天累積起來的心意。",
+        "兔飽飽今天也要繼續陪著豆包呀 ✨",
+        "願每一次相遇，都剛好值得收藏。"
+    ],
+
+    [
+        "今天的粉絲日，也要認真發光。",
+        "小小的喜歡，也可以累積成很長很長的故事。",
+        "🫘 豆包加油！🐰 兔飽飽一直都在！"
+    ],
+
+    [
+        "日子會往前走，但喜歡可以一直留下來。",
+        "今天也是值得紀念的一天。",
+        "把今天的快樂，好好收藏起來吧 💕"
+    ],
+
+    [
+        "從第一天開始，到現在的每一天，都算數。",
+        "謝謝每一次讓人心動的瞬間。",
+        "兔飽飽的喜歡，今天也準時送達 🐰💌"
+    ],
+
+    [
+        "如果喜歡有形狀，大概就是一個又一個被記住的日子。",
+        "今天也給自己一點小小的快樂吧 🌸",
+        "豆包 × 兔飽飽，繼續一起走。"
+    ],
+
+    [
+        "今天不是普通的一天，是我們一起走過的第 N 天。",
+        "把平凡的日子過成值得紀念的日子。",
+        "🫘💗🐰"
+    ]
+
+];
+
+
+function updateBlessing(days) {
+
+
+    /*
+       根據日期自動選一句
+       同一天看到的內容會固定
+    */
+
+    const today =
+        new Date();
+
+
+    const daySeed =
+        today.getFullYear() *
+        10000 +
+        (today.getMonth() + 1) *
+        100 +
+        today.getDate();
+
+
+    const index =
+        daySeed %
+        fanQuotes.length;
+
+
+    const quote =
+        fanQuotes[index];
+
+
+    /*
+       如果是週年
+    */
+
+    if (
+        isAnniversary(days)
+    ) {
+
+
+        const year =
+            days /
+            ANNIVERSARY_INTERVAL;
+
+
+        document.getElementById(
+            "quoteMain"
+        ).textContent =
+
+            "🎂 今天是我們的第 " +
+            year +
+            " 週年！";
+
+
+        document.getElementById(
+            "quoteSub"
+        ).innerHTML =
+
+            "🫘 豆包 × 🐰 兔飽飽<br>" +
+            "這一天一定要好好記住。💗";
+
+
+        document.getElementById(
+            "supportText"
+        ).innerHTML =
+
+            "🎉 週年快樂！<br>" +
+            "願下一個365天，也繼續收藏好多好多快樂。";
+
+
+    }
+
+    /*
+       50天
+    */
+
+    else if (
+        days %
+        MILESTONE_INTERVAL === 0
+    ) {
+
+
+        document.getElementById(
+            "quoteMain"
+        ).textContent =
+
+            "🎉 今天是第 " +
+            days +
+            " 天！";
+
+
+        document.getElementById(
+            "quoteSub"
+        ).innerHTML =
+
+            "又完成一個小小的里程碑啦 💗<br>" +
+            "兔飽飽和豆包繼續一起走！";
+
+
+        document.getElementById(
+            "supportText"
+        ).innerHTML =
+
+            "💗 第 " +
+            days +
+            " 天紀念日！<br>" +
+            "把今天的快樂好好收藏起來吧 ✨";
+
+    }
+
+    else {
+
+
+        document.getElementById(
+            "quoteMain"
+        ).textContent =
+            quote[0];
+
+
+        document.getElementById(
+            "quoteSub"
+        ).innerHTML =
+            quote[1];
+
+
+        document.getElementById(
+            "supportText"
+        ).innerHTML =
+            quote[2];
+
+    }
+
+
+    document.getElementById(
+        "quoteDay"
+    ).textContent =
+
+        "今天是粉絲第 " +
+        days +
+        " 天";
+
+
+
+    /*
+       今日小任務
+    */
+
+    const tasks = [
+
+        "今天也記得開心追豆包一下 ✨",
+
+        "去看看豆包今天有沒有新的動態吧 🫘",
+
+        "給自己一個小小的快樂，再繼續追星 💗",
+
+        "今天也把喜歡變成一點點好心情 🌸",
+
+        "記得喝水、休息，也不要忘記豆包 🐰",
+
+        "把今天值得收藏的瞬間記下來 ✨",
+
+        "兔飽飽今日任務：開心就好！💗"
+
+    ];
+
+
+    const taskIndex =
+        daySeed %
+        tasks.length;
+
+
+    document.getElementById(
+        "dailyTask"
+    ).textContent =
+        tasks[taskIndex];
+
+}
+
+
+
+/* =================================
+   月曆
+================================= */
+
+function renderCalendar() {
+
+
+    const calendar =
+        document.getElementById(
+            "calendar"
+        );
+
+
+    calendar.innerHTML = "";
+
+
+    document.getElementById(
+        "monthTitle"
+    ).textContent =
+
+        currentYear +
+        " 年 " +
+        (
+            currentMonthIndex +
+            1
+        ) +
+        " 月";
+
+
+    const firstDay =
+        new Date(
+            currentYear,
+            currentMonthIndex,
+            1
+        ).getDay();
+
+
+    const daysInMonth =
+        new Date(
+            currentYear,
+            currentMonthIndex + 1,
+            0
+        ).getDate();
+
+
+    for (
+        let i = 0;
+        i < firstDay;
+        i++
+    ) {
+
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+
+        empty.className =
+            "day empty";
+
+
+        calendar.appendChild(
+            empty
+        );
+
+    }
+
+
+    const today =
+        new Date();
+
+
+    for (
+        let day = 1;
+        day <= daysInMonth;
+        day++
+    ) {
+
+
+        const date =
+            new Date(
+                currentYear,
+                currentMonthIndex,
+                day
+            );
+
+
+        const fanDay =
+            getFanDay(date);
+
+
+        const cell =
+            document.createElement(
+                "div"
+            );
+
+
+        cell.className =
+            "day";
+
+
+        if (
+            date.toDateString() ===
+            today.toDateString()
+        ) {
+
+            cell.classList.add(
+                "today"
+            );
+
+        }
+
+
+        if (
+            date > today
+        ) {
+
+            cell.classList.add(
+                "future"
+            );
+
+        }
+
+
+        const anniversary =
+            isAnniversary(
+                fanDay
+            );
+
+
+        const milestone50 =
+
+            fanDay > 0 &&
+            fanDay %
+            MILESTONE_INTERVAL ===
+            0;
+
+
+        if (
+            anniversary
+        ) {
+
+
+            cell.classList.add(
+                "anniversary"
+            );
+
+
+            cell.innerHTML =
+
+                "<div>" +
+                day +
+                "</div>" +
+
+                "<div class='milestone-text'>" +
+
+                fanDay +
+
+                "🎂" +
+
+                "</div>";
+
+        }
+
+        else if (
+            milestone50
+        ) {
+
+
+            cell.classList.add(
+                "milestone"
+            );
+
+
+            cell.innerHTML =
+
+                "<div>" +
+                day +
+                "</div>" +
+
+                "<div class='milestone-text'>" +
+
+                fanDay +
+
+                "💗" +
+
+                "</div>";
+
+        }
+
+        else {
+
+
+            cell.innerHTML =
+
+                "<div>" +
+                day +
+                "</div>";
+
+        }
+
+
+        calendar.appendChild(
+            cell
+        );
+
+    }
+
+}
+
+
+
+/* =================================
+   月份切換
+================================= */
+
+function changeMonth(offset) {
+
+
+    currentMonthIndex +=
+        offset;
+
+
+    if (
+        currentMonthIndex < 0
+    ) {
+
+        currentMonthIndex = 11;
+
+        currentYear--;
+
+    }
+
+
+    if (
+        currentMonthIndex > 11
+    ) {
+
+        currentMonthIndex = 0;
+
+        currentYear++;
+
+    }
+
+
+    renderCalendar();
+
+}
+
+
+
+/* =================================
+   里程碑
+================================= */
+
+function renderMilestones(days) {
+
+
+    const list =
+        document.getElementById(
+            "milestoneList"
+        );
+
+
+    const homeList =
+        document.getElementById(
+            "homeMilestoneList"
+        );
+
+
+    list.innerHTML = "";
+
+    homeList.innerHTML = "";
+
+
+    const milestones = [];
+
+
+    for (
+        let i = 50;
+        i <= 1000;
+        i += 50
+    ) {
+
+        milestones.push({
+
+            day: i,
+
+            type: "50"
+
+        });
+
+    }
+
+
+    for (
+        let i = 365;
+        i <= 3650;
+        i += 365
+    ) {
+
+        milestones.push({
+
+            day: i,
+
+            type: "year"
+
+        });
+
+    }
+
+
+    milestones.sort(
+        (a,b) =>
+            a.day - b.day
+    );
+
+
+    /*
+       完整列表
+    */
+
+    milestones.forEach(
+        milestone => {
+
+
+        const item =
+            createMilestoneItem(
+                milestone,
+                days
+            );
+
+
+        list.appendChild(
+            item
+        );
+
+    });
+
+
+
+    /*
+       首頁只顯示最近幾個
+    */
+
+    const upcoming =
+        milestones
+            .filter(
+                m =>
+                    m.day >= days
+            )
+            .slice(0,3);
+
+
+    if (
+        upcoming.length === 0
+    ) {
+
+        milestones
+            .slice(-3)
+            .forEach(
+                milestone => {
+
+                    homeList.appendChild(
+                        createMilestoneItem(
+                            milestone,
+                            days
+                        )
+                    );
+
+                }
+            );
+
+    }
+
+    else {
+
+        upcoming.forEach(
+            milestone => {
+
+                homeList.appendChild(
+                    createMilestoneItem(
+                        milestone,
+                        days
+                    )
+                );
+
+            }
+        );
+
+    }
+
+}
+
+
+
+/* =================================
+   建立里程碑項目
+================================= */
+
+function createMilestoneItem(
+    milestone,
+    days
+) {
+
+
+    const item =
+        document.createElement(
+            "div"
+        );
+
+
+    item.className =
+        "milestone-item";
+
+
+    if (
+        milestone.type ===
+        "year"
+    ) {
+
+        item.classList.add(
+            "anniversary-item"
+        );
+
+    }
+
+
+    const reached =
+        days >=
+        milestone.day;
+
+
+    let title;
+
+    let description;
+
+    let icon;
+
+
+    if (
+        milestone.type ===
+        "year"
+    ) {
+
+
+        const year =
+            milestone.day /
+            ANNIVERSARY_INTERVAL;
+
+
+        title =
+            "第 " +
+            year +
+            " 週年 🎂";
+
+
+        description =
+            reached
+            ? "已經一起走過這個週年啦 ✨"
+            : "未來值得期待的週年";
+
+
+        icon = "🎂";
+
+    }
+
+    else {
+
+
+        title =
+            "粉絲第 " +
+            milestone.day +
+            " 天";
+
+
+        description =
+            reached
+            ? "已經一起走過啦 ✨"
+            : "未來值得期待的紀念日";
+
+
+        icon = "💗";
+
+    }
+
+
+    item.innerHTML = `
+
+        <div class="milestone-icon">
+
+            ${
+                reached
+                ? icon
+                : "🎀"
+            }
+
+        </div>
+
+
+        <div class="milestone-info">
+
+            <strong>
+                ${title}
+            </strong>
+
+            <small>
+                ${description}
+            </small>
+
+        </div>
+
+
+        <div class="done">
+
+            ${
+                reached
+                ? "✓"
+                : "♡"
+            }
+
+        </div>
+
+    `;
+
+
+    return item;
+
+}
+
+
+
+/* =================================
+   啟動
+================================= */
+
+updateToday();
+
+renderCalendar();
+
+
+/*
+   每分鐘更新
+*/
+
+setInterval(
+    () => {
+
+        updateToday();
+
+        renderCalendar();
+
+    },
+    60000
+);
+
+
+/*
+   飄愛心
+*/
+
+setInterval(
+    () => {
+
+        createHeart();
+
+    },
+    6500
+);
+
+
+
+/* =================================
+   愛心動畫
+================================= */
+
+function createHeart() {
+
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+
+    heart.className =
+        "heart";
+
+
+    const emojis = [
+
+        "💗",
+        "💕",
+        "💖",
+        "✨",
+        "🌸"
+
+    ];
+
+
+    heart.textContent =
+
+        emojis[
+            Math.floor(
+                Math.random() *
+                emojis.length
+            )
+        ];
+
+
+    heart.style.left =
+
+        Math.random() *
+        100 +
+        "vw";
+
+
+    heart.style.bottom =
+        "75px";
+
+
+    heart.style.fontSize =
+
+        (
+            14 +
+            Math.random() *
+            12
+        ) +
+        "px";
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+        () => {
+
+            heart.remove();
+
+        },
+        4000
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
