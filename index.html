@@ -7,9 +7,7 @@
 
 <meta
     name="viewport"
-    content="width=device-width,
-             initial-scale=1.0,
-             viewport-fit=cover">
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <meta
     name="apple-mobile-web-app-capable"
@@ -25,25 +23,31 @@
 
 <meta
     name="theme-color"
-    content="#fff4f8">
+    content="#fff5fa">
 
 <title>豆包 × 兔飽飽</title>
 
 
 <style>
 
-/* =================================
+/* ==================================================
    基本設定
-================================= */
+================================================== */
 
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
+html {
+    min-height: 100%;
+}
+
 body {
 
     margin: 0;
+
+    min-height: 100vh;
 
     font-family:
         -apple-system,
@@ -53,47 +57,64 @@ body {
         "Noto Sans TC",
         sans-serif;
 
+    color: #463c4d;
+
     background:
+
         radial-gradient(
-            circle at 10% 5%,
+            circle at 5% 0%,
             #ffe0ec 0,
-            transparent 28%
+            transparent 30%
         ),
 
         radial-gradient(
-            circle at 90% 15%,
-            #e8ddff 0,
-            transparent 25%
+            circle at 100% 10%,
+            #e9ddff 0,
+            transparent 30%
         ),
 
         linear-gradient(
             180deg,
-            #fff8fb 0%,
-            #f7f3ff 100%
+            #fff9fc 0%,
+            #f6f1ff 100%
         );
 
-    color: #463c4d;
-
-    min-height: 100vh;
-
-    padding-bottom: 105px;
+    padding-bottom:
+        calc(
+            24px +
+            env(safe-area-inset-bottom)
+        );
 }
 
 
-/* =================================
-   HEADER
-================================= */
+/* ==================================================
+   APP
+================================================== */
 
-.header {
+.app {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    margin: auto;
 
     padding:
-        24px
-        20px
-        10px;
+        calc(
+            14px +
+            env(safe-area-inset-top)
+        )
+        14px
+        25px;
 
 }
 
-.app-title {
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.header {
 
     display: flex;
 
@@ -101,9 +122,11 @@ body {
 
     justify-content: space-between;
 
+    margin-bottom: 12px;
+
 }
 
-.title-left {
+.brand {
 
     display: flex;
 
@@ -121,293 +144,178 @@ body {
 
     border-radius: 16px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #ffb6cf,
-            #d9b9ff
-        );
-
     display: flex;
 
     align-items: center;
 
     justify-content: center;
 
-    font-size: 26px;
+    background:
+        linear-gradient(
+            135deg,
+            #ffb7d0,
+            #d8baff
+        );
 
     box-shadow:
-        0 8px 20px
-        rgba(210,150,190,.25);
+        0 7px 18px
+        rgba(210,150,190,.20);
+
+    font-size: 25px;
 
 }
 
-.title-text h1 {
+.brand-text h1 {
 
     margin: 0;
 
-    font-size: 21px;
+    font-size: 19px;
 
-    font-weight: 800;
+    font-weight: 900;
 
 }
 
-.title-text p {
+.brand-text p {
 
-    margin:
-        3px
-        0
-        0;
+    margin: 3px 0 0;
 
-    font-size: 12px;
+    font-size: 11px;
 
-    color: #9a8e9f;
+    color: #9b8d9f;
 
 }
 
 .header-bunny {
 
-    font-size: 32px;
+    font-size: 31px;
 
 }
 
 
-/* =================================
-   MAIN
-================================= */
+/* ==================================================
+   今日粉絲天數
+================================================== */
 
-.container {
-
-    padding:
-        10px
-        16px
-        0;
-
-    max-width: 600px;
-
-    margin: auto;
-
-}
-
-
-/* =================================
-   分頁
-================================= */
-
-.page {
-
-    display: none;
-
-    animation:
-        pageIn .28s ease;
-
-}
-
-.page.active {
-
-    display: block;
-
-}
-
-@keyframes pageIn {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(8px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-
-}
-
-
-/* =================================
-   HERO
-================================= */
-
-.hero {
+.day-card {
 
     position: relative;
 
     overflow: hidden;
 
-    border-radius: 30px;
-
     padding:
-        25px
-        22px
-        22px;
+        19px
+        19px
+        18px;
+
+    border-radius: 26px;
 
     background:
         linear-gradient(
             135deg,
             rgba(255,255,255,.95),
-            rgba(255,237,246,.92)
+            rgba(255,238,247,.95)
         );
 
     box-shadow:
-
-        0 14px 35px
-        rgba(185,145,180,.18),
-
-        inset 0 1px
-        rgba(255,255,255,.9);
+        0 12px 30px
+        rgba(180,140,175,.16);
 
     border:
         1px solid
-        rgba(255,255,255,.8);
+        rgba(255,255,255,.9);
 
 }
 
-.hero::before {
+.day-card::before {
 
     content: "";
 
     position: absolute;
 
-    width: 170px;
+    width: 130px;
 
-    height: 170px;
+    height: 130px;
 
-    right: -60px;
+    right: -45px;
 
-    top: -60px;
-
-    background: #ffd4e5;
+    top: -50px;
 
     border-radius: 50%;
+
+    background: #ffd5e6;
 
     opacity: .55;
 
 }
 
-.hero::after {
+.day-card::after {
 
     content: "";
 
     position: absolute;
 
-    width: 110px;
+    width: 90px;
 
-    height: 110px;
+    height: 90px;
 
-    left: -50px;
+    left: -45px;
 
-    bottom: -50px;
-
-    background: #e5d8ff;
+    bottom: -45px;
 
     border-radius: 50%;
 
-    opacity: .5;
+    background: #e5d9ff;
+
+    opacity: .55;
 
 }
 
-.hero-top {
+.day-card-content {
 
     position: relative;
 
     z-index: 2;
 
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
 }
 
-.hero-label {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    background: #fff;
-
-    border-radius: 30px;
-
-    padding:
-        7px
-        12px;
+.day-label {
 
     font-size: 12px;
 
-    color: #9a738a;
-
-    box-shadow:
-        0 5px 15px
-        rgba(160,120,150,.08);
-
-}
-
-.hero-character {
-
-    font-size: 40px;
-
-}
-
-.hero-main {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin-top: 12px;
-
-}
-
-.hero-small {
-
-    font-size: 14px;
-
-    color: #8f8292;
+    color: #94768a;
 
 }
 
 .day-number {
 
-    font-size: 68px;
+    margin-top: 2px;
+
+    font-size: 47px;
 
     line-height: 1;
 
-    letter-spacing: -4px;
-
     font-weight: 900;
+
+    letter-spacing: -2px;
 
     background:
         linear-gradient(
             135deg,
             #ed75a7,
-            #a66fe3
+            #9e70df
         );
 
     -webkit-background-clip: text;
 
     -webkit-text-fill-color: transparent;
 
-    margin:
-        5px
-        0;
-
 }
 
-.day-title {
+.day-description {
 
-    font-size: 15px;
+    margin-top: 4px;
+
+    font-size: 13px;
 
     font-weight: 700;
 
@@ -417,162 +325,55 @@ body {
 
 .start-date {
 
-    margin-top: 13px;
+    margin-top: 7px;
 
-    font-size: 12px;
+    font-size: 10px;
 
-    color: #9b8d9f;
+    color: #a092a2;
 
 }
 
 
-/* =================================
-   週年
-================================= */
+/* ==================================================
+   下一個里程碑
+================================================== */
 
-.anniversary-badge {
+.next-box {
 
-    display: none;
-
-    margin-top: 15px;
+    margin-top: 10px;
 
     padding:
-        10px
+        12px
         14px;
 
-    border-radius: 16px;
+    border-radius: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
 
     background:
         linear-gradient(
             135deg,
-            #fff0c9,
-            #ffd8e8
+            #fff0f6,
+            #f3edff
         );
 
-    color: #a66a82;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    text-align: center;
-
 }
 
-.anniversary-badge.show {
-
-    display: block;
-
-}
-
-
-/* =================================
-   PROGRESS
-================================= */
-
-.progress-box {
-
-    margin-top: 20px;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-.progress-info {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    font-size: 12px;
-
-    color: #8f8292;
-
-    margin-bottom: 7px;
-
-}
-
-.progress-bar {
-
-    height: 10px;
-
-    background: #f0e8f0;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-}
-
-.progress-fill {
-
-    height: 100%;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff9fc1,
-            #c29af2
-        );
-
-    transition:
-        width .6s ease;
-
-}
-
-
-/* =================================
-   CARD
-================================= */
-
-.card {
-
-    background:
-        rgba(255,255,255,.86);
-
-    border-radius: 25px;
-
-    padding: 20px;
-
-    margin-top: 15px;
-
-    box-shadow:
-        0 10px 28px
-        rgba(160,130,170,.12);
-
-    border:
-        1px solid
-        rgba(255,255,255,.9);
-
-}
-
-.card-title {
+.next-left {
 
     display: flex;
 
     align-items: center;
 
-    justify-content: space-between;
-
-    margin-bottom: 15px;
+    gap: 9px;
 
 }
 
-.card-title-left {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-}
-
-.card-icon {
+.next-icon {
 
     width: 34px;
 
@@ -586,76 +387,86 @@ body {
 
     justify-content: center;
 
-    background: #fff0f6;
+    background: rgba(255,255,255,.8);
 
     font-size: 18px;
 
 }
 
-.card-title h2 {
+.next-label {
 
-    margin: 0;
+    font-size: 10px;
 
-    font-size: 16px;
-
-}
-
-.card-title span {
-
-    font-size: 11px;
-
-    color: #a294a5;
+    color: #9d879a;
 
 }
 
+.next-title {
 
-/* =================================
-   NEXT MILESTONE
-================================= */
+    margin-top: 2px;
 
-.next-card {
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff0f6,
-            #f4eeff
-        );
-
-}
-
-.next-type {
-
-    font-size: 12px;
-
-    color: #a07895;
-
-    margin-bottom: 3px;
-
-}
-
-.next-number {
-
-    font-size: 34px;
+    font-size: 14px;
 
     font-weight: 900;
 
-    color: #b06fa4;
+    color: #a56c96;
 
 }
 
-.next-desc {
+.next-right {
 
-    font-size: 13px;
+    text-align: right;
 
-    color: #8f8292;
+}
+
+.next-days {
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    color: #b16fa2;
+
+}
+
+.next-days-label {
+
+    font-size: 9px;
+
+    color: #a193a4;
 
 }
 
 
-/* =================================
-   CALENDAR
-================================= */
+/* ==================================================
+   月曆卡片
+================================================== */
+
+.calendar-card {
+
+    margin-top: 12px;
+
+    padding: 16px 13px 14px;
+
+    border-radius: 26px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    box-shadow:
+        0 12px 30px
+        rgba(160,130,170,.13);
+
+    border:
+        1px solid
+        rgba(255,255,255,.95);
+
+}
+
+
+/* ==================================================
+   月份標題
+================================================== */
 
 .calendar-header {
 
@@ -665,45 +476,79 @@ body {
 
     justify-content: space-between;
 
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 
 }
 
 .month-title {
 
-    font-size: 18px;
+    text-align: center;
 
-    font-weight: 800;
+}
+
+.month-main {
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    color: #554957;
+
+}
+
+.month-sub {
+
+    margin-top: 2px;
+
+    font-size: 10px;
+
+    color: #aaa0ad;
 
 }
 
 .month-btn {
 
-    width: 34px;
+    width: 38px;
 
-    height: 34px;
+    height: 38px;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 13px;
 
-    background: #f8f2f8;
-
-    font-size: 17px;
+    background: #f8f1f8;
 
     color: #806f82;
 
+    font-size: 22px;
+
+    line-height: 1;
+
 }
 
-.weekdays,
-.calendar {
+.month-btn:active {
+
+    transform: scale(.93);
+
+    background: #f1e7f2;
+
+}
+
+
+/* ==================================================
+   星期
+================================================== */
+
+.weekdays {
 
     display: grid;
 
     grid-template-columns:
         repeat(7, 1fr);
 
-    gap: 5px;
+    gap: 3px;
+
+    margin-bottom: 4px;
 
 }
 
@@ -713,17 +558,35 @@ body {
 
     font-size: 10px;
 
-    color: #aaa0ad;
+    color: #a79ba9;
 
-    padding-bottom: 4px;
+    padding-bottom: 3px;
+
+}
+
+
+/* ==================================================
+   月曆
+================================================== */
+
+.calendar {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 4px;
 
 }
 
 .day {
 
-    min-height: 47px;
+    min-height: 54px;
 
     border-radius: 14px;
+
+    position: relative;
 
     display: flex;
 
@@ -733,17 +596,38 @@ body {
 
     justify-content: center;
 
-    position: relative;
-
     font-size: 13px;
+
+    color: #554a58;
+
+    transition:
+        transform .15s ease,
+        background .15s ease;
+
+}
+
+.day:active {
+
+    transform: scale(.94);
 
 }
 
 .day.empty {
 
-    opacity: 0;
+    visibility: hidden;
 
 }
+
+.day.future {
+
+    color: #cfc7d1;
+
+}
+
+
+/* ==================================================
+   今天
+================================================== */
 
 .day.today {
 
@@ -751,22 +635,51 @@ body {
 
     box-shadow:
         inset 0 0 0 2px
-        #f5b1cd;
+        #f3a9c9;
 
-    font-weight: 800;
-
-}
-
-.day.future {
-
-    color: #cfc7d0;
+    font-weight: 900;
 
 }
 
+.day.today::before {
 
-/* =================================
-   50天
-================================= */
+    content: "今天";
+
+    position: absolute;
+
+    top: 3px;
+
+    font-size: 7px;
+
+    color: #cf739c;
+
+}
+
+
+/* ==================================================
+   粉絲日
+================================================== */
+
+.fan-day-number {
+
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: #aaa0ad;
+
+}
+
+.day.future .fan-day-number {
+
+    color: #d6d0d7;
+
+}
+
+
+/* ==================================================
+   50天里程碑
+================================================== */
 
 .day.milestone {
 
@@ -774,543 +687,293 @@ body {
         linear-gradient(
             135deg,
             #ffe0ec,
-            #eadcff
+            #eee3ff
         );
 
-    font-weight: 800;
+    font-weight: 900;
 
 }
 
-.day.milestone .milestone-text {
+.day.milestone .fan-day-number {
 
-    font-size: 9px;
+    color: #b56e98;
 
-    color: #bd6e9c;
-
-    margin-top: 2px;
+    font-weight: 900;
 
 }
 
 .day.milestone::after {
 
-    content: "✦";
+    content: "♥";
 
     position: absolute;
 
-    top: 1px;
-
     right: 4px;
+
+    top: 3px;
 
     font-size: 8px;
 
-    color: #d895b6;
+    color: #d48caf;
 
 }
 
 
-/* =================================
+/* ==================================================
    週年
-================================= */
+================================================== */
 
 .day.anniversary {
 
     background:
         linear-gradient(
             135deg,
-            #ffe8a8,
+            #ffe8a7,
             #ffd2e5
         );
 
     box-shadow:
-        0 0 0 2px
-        #f0b05f;
+        inset 0 0 0 2px
+        #edb15e;
 
     font-weight: 900;
 
 }
 
-.day.anniversary .milestone-text {
+.day.anniversary .fan-day-number {
 
-    color: #a65e70;
+    color: #a35e6f;
+
+    font-weight: 900;
+
+}
+
+.day.anniversary::after {
+
+    content: "🎂";
+
+    position: absolute;
+
+    right: 3px;
+
+    top: 1px;
 
     font-size: 9px;
 
-    font-weight: 900;
-
 }
 
 
-/* =================================
-   里程碑列表
-================================= */
+/* ==================================================
+   圖例
+================================================== */
 
-.milestone-list {
+.legend {
 
     display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-
-}
-
-.milestone-item {
-
-    display: flex;
-
-    align-items: center;
-
-    padding: 13px;
-
-    border-radius: 17px;
-
-    background: #faf7fb;
-
-}
-
-.milestone-item.anniversary-item {
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff8df,
-            #fff0f5
-        );
-
-}
-
-.milestone-icon {
-
-    width: 42px;
-
-    height: 42px;
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffd9e8,
-            #e6d8ff
-        );
-
-    display: flex;
-
-    align-items: center;
 
     justify-content: center;
 
-    font-size: 20px;
+    gap: 13px;
 
-    margin-right: 12px;
+    margin-top: 13px;
 
-}
+    font-size: 9px;
 
-.anniversary-item .milestone-icon {
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffe49b,
-            #ffc8df
-        );
+    color: #9b909f;
 
 }
 
-.milestone-info {
+.legend-item {
 
-    flex: 1;
+    display: flex;
 
-}
+    align-items: center;
 
-.milestone-info strong {
-
-    display: block;
-
-    font-size: 14px;
+    gap: 4px;
 
 }
 
-.milestone-info small {
+.legend-dot {
 
-    color: #a095a3;
+    width: 9px;
 
-    font-size: 11px;
+    height: 9px;
 
-}
-
-.done {
-
-    font-size: 18px;
+    border-radius: 4px;
 
 }
 
+.legend-today {
 
-/* =================================
-   今日粉絲小語
-================================= */
-
-.quote-hero {
-
-    text-align: center;
-
-    padding:
-        28px
-        20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff0f7,
-            #f2ecff
-        );
-
-}
-
-.quote-icon {
-
-    font-size: 45px;
-
-}
-
-.quote-day {
-
-    margin-top: 8px;
-
-    color: #a07895;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-}
-
-.quote-main {
-
-    margin-top: 18px;
-
-    font-size: 21px;
-
-    line-height: 1.7;
-
-    font-weight: 800;
-
-    color: #72576d;
-
-}
-
-.quote-sub {
-
-    margin-top: 12px;
-
-    color: #9b8d9f;
-
-    font-size: 12px;
-
-    line-height: 1.8;
-
-}
-
-
-/* =================================
-   今日應援
-================================= */
-
-.support-card {
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff8df,
-            #fff0f6
-        );
-
-}
-
-.support-title {
-
-    font-size: 15px;
-
-    font-weight: 800;
-
-}
-
-.support-text {
-
-    margin-top: 10px;
-
-    color: #916f83;
-
-    font-size: 14px;
-
-    line-height: 1.8;
-
-}
-
-
-/* =================================
-   兔飽飽小天地
-================================= */
-
-.bunny-card {
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff4f8,
-            #f1edff
-        );
-
-    text-align: center;
-
-    padding:
-        28px
-        18px;
-
-}
-
-.big-bunny {
-
-    font-size: 65px;
-
-    margin-bottom: 4px;
-
-}
-
-.bunny-title {
-
-    font-size: 21px;
-
-    font-weight: 900;
-
-}
-
-.bunny-text {
-
-    margin-top: 8px;
-
-    color: #918595;
-
-    font-size: 13px;
-
-    line-height: 1.8;
-
-}
-
-.slogan {
-
-    margin-top: 15px;
-
-    padding: 12px;
-
-    border-radius: 15px;
-
-    background:
-        rgba(255,255,255,.72);
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    color: #a56d91;
-
-}
-
-
-/* =================================
-   粉絲資料
-================================= */
-
-.info-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 10px;
-
-}
-
-.info-box {
-
-    padding: 17px 12px;
-
-    border-radius: 18px;
-
-    background: #faf7fb;
-
-    text-align: center;
-
-}
-
-.info-icon {
-
-    font-size: 25px;
-
-}
-
-.info-number {
-
-    margin-top: 5px;
-
-    font-size: 20px;
-
-    font-weight: 900;
-
-    color: #ae6f9d;
-
-}
-
-.info-label {
-
-    margin-top: 3px;
-
-    font-size: 11px;
-
-    color: #9c919f;
-
-}
-
-
-/* =================================
-   兔飽飽口號
-================================= */
-
-.rabbit-message {
-
-    text-align: center;
-
-    padding: 22px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7efff,
-            #fff0f7
-        );
-
-}
-
-.rabbit-message-title {
-
-    font-size: 16px;
-
-    font-weight: 900;
-
-}
-
-.rabbit-message-text {
-
-    margin-top: 9px;
-
-    font-size: 14px;
-
-    line-height: 1.9;
-
-    color: #866c82;
-
-}
-
-
-/* =================================
-   底部導覽
-================================= */
-
-.bottom-nav {
-
-    position: fixed;
-
-    z-index: 50;
-
-    left: 12px;
-
-    right: 12px;
-
-    bottom:
-        max(
-            12px,
-            env(safe-area-inset-bottom)
-        );
-
-    height: 67px;
-
-    background:
-        rgba(255,255,255,.91);
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
+    background: #fff0f6;
 
     border:
         1px solid
-        rgba(255,255,255,.8);
+        #f3a9c9;
 
-    border-radius: 23px;
+}
 
-    box-shadow:
-        0 10px 35px
-        rgba(110,80,120,.18);
+.legend-milestone {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe0ec,
+            #eee3ff
+        );
+
+}
+
+.legend-year {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe8a7,
+            #ffd2e5
+        );
+
+}
+
+
+/* ==================================================
+   日期資訊
+================================================== */
+
+.selected-card {
+
+    margin-top: 12px;
+
+    padding: 15px;
+
+    border-radius: 21px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff7fb,
+            #f5f0ff
+        );
+
+    text-align: center;
+
+}
+
+.selected-date {
+
+    font-size: 11px;
+
+    color: #9b8e9e;
+
+}
+
+.selected-main {
+
+    margin-top: 4px;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    color: #76566f;
+
+}
+
+.selected-sub {
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: #9a8c9d;
+
+}
+
+
+/* ==================================================
+   里程碑小卡
+================================================== */
+
+.mini-milestones {
 
     display: grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
-    padding: 6px;
+    gap: 7px;
+
+    margin-top: 12px;
 
 }
 
-.nav-btn {
+.mini-item {
 
-    border: none;
+    padding: 11px 5px;
 
-    background: transparent;
+    text-align: center;
 
-    border-radius: 18px;
+    border-radius: 15px;
+
+    background: #faf7fb;
+
+}
+
+.mini-icon {
+
+    font-size: 17px;
+
+}
+
+.mini-number {
+
+    margin-top: 2px;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    color: #ae709e;
+
+}
+
+.mini-label {
+
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: #a49aa7;
+
+}
+
+
+/* ==================================================
+   底部
+================================================== */
+
+.footer {
+
+    padding: 18px 0 0;
+
+    text-align: center;
 
     color: #aaa0ad;
 
-    font-family: inherit;
-
-    font-size: 10px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 2px;
+    font-size: 9px;
 
 }
 
-.nav-btn span {
+.footer strong {
 
-    font-size: 21px;
-
-}
-
-.nav-btn.active {
-
-    background: #fff0f6;
-
-    color: #bc6d98;
-
-    font-weight: 700;
+    color: #b2779e;
 
 }
 
 
-/* =================================
-   愛心
-================================= */
+/* ==================================================
+   飄愛心
+================================================== */
 
 .heart {
 
@@ -1318,10 +981,10 @@ body {
 
     pointer-events: none;
 
+    z-index: 100;
+
     animation:
         floatUp 4s linear forwards;
-
-    z-index: 100;
 
 }
 
@@ -1346,8 +1009,8 @@ body {
     100% {
 
         transform:
-            translateY(-160px)
-            scale(1.3);
+            translateY(-180px)
+            scale(1.25);
 
         opacity: 0;
 
@@ -1356,30 +1019,60 @@ body {
 }
 
 
-/* =================================
-   電腦版
-================================= */
+/* ==================================================
+   iPhone 小螢幕
+================================================== */
 
-@media (min-width: 700px) {
+@media (max-width: 370px) {
 
-    .container {
+    .app {
 
-        max-width: 650px;
+        padding-left: 10px;
+
+        padding-right: 10px;
 
     }
 
-    .bottom-nav {
+    .day {
 
-        max-width: 500px;
+        min-height: 48px;
 
-        left: 50%;
+        border-radius: 12px;
 
-        right: auto;
+    }
 
-        width: 500px;
+    .day-number {
 
-        transform:
-            translateX(-50%);
+        font-size: 43px;
+
+    }
+
+    .calendar-card {
+
+        padding-left: 9px;
+
+        padding-right: 9px;
+
+    }
+
+}
+
+
+/* ==================================================
+   橫向／大螢幕
+================================================== */
+
+@media (min-width: 600px) {
+
+    body {
+
+        padding-top: 20px;
+
+    }
+
+    .app {
+
+        max-width: 560px;
 
     }
 
@@ -1393,21 +1086,22 @@ body {
 <body>
 
 
-<!-- =================================
-     HEADER
-================================= -->
+<div class="app">
 
-<header class="header">
 
-    <div class="app-title">
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-        <div class="title-left">
+    <header class="header">
+
+        <div class="brand">
 
             <div class="logo">
                 🫘
             </div>
 
-            <div class="title-text">
+            <div class="brand-text">
 
                 <h1>
                     豆包 × 兔飽飽
@@ -1421,52 +1115,24 @@ body {
 
         </div>
 
-
         <div class="header-bunny">
             🐰
         </div>
 
-    </div>
-
-</header>
+    </header>
 
 
+    <!-- =========================================
+         粉絲天數
+    ========================================== -->
 
-<main class="container">
+    <section class="day-card">
 
+        <div class="day-card-content">
 
-<!-- =================================
-     🫘 第一頁：日曆
-================================= -->
-
-<section
-    class="page active"
-    id="page-calendar">
-
-
-    <!-- 今日天數 -->
-
-    <section class="hero">
-
-        <div class="hero-top">
-
-            <div class="hero-label">
+            <div class="day-label">
                 🐰 兔飽飽粉絲日誌
             </div>
-
-            <div class="hero-character">
-                🫘
-            </div>
-
-        </div>
-
-
-        <div class="hero-main">
-
-            <div class="hero-small">
-                今天和豆包一起走過
-            </div>
-
 
             <div
                 class="day-number"
@@ -1476,13 +1142,11 @@ body {
 
             </div>
 
+            <div class="day-description">
 
-            <div class="day-title">
-
-                粉絲第幾天 💕
+                今天是粉絲第幾天 💕
 
             </div>
-
 
             <div class="start-date">
 
@@ -1492,37 +1156,55 @@ body {
 
         </div>
 
-
-        <div
-            class="anniversary-badge"
-            id="anniversaryBadge">
-
-        </div>
+    </section>
 
 
-        <div class="progress-box">
+    <!-- =========================================
+         下一個里程碑
+    ========================================== -->
 
-            <div class="progress-info">
+    <section class="next-box">
 
-                <span id="progressText">
-                    距離下一個紀念日
-                </span>
+        <div class="next-left">
 
-                <span id="progressPercent">
-                    0%
-                </span>
+            <div
+                class="next-icon"
+                id="nextIcon">
+
+                💗
 
             </div>
 
+            <div>
 
-            <div class="progress-bar">
+                <div class="next-label">
+                    下一個紀念日
+                </div>
 
                 <div
-                    class="progress-fill"
-                    id="progressFill"
-                    style="width:0%">
+                    class="next-title"
+                    id="nextTitle">
+
+                    第 50 天
+
                 </div>
 
+            </div>
+
+        </div>
+
+        <div class="next-right">
+
+            <div
+                class="next-days"
+                id="remainingDays">
+
+                還有 3 天
+
+            </div>
+
+            <div class="next-days-label">
+                一起走下去 💗
             </div>
 
         </div>
@@ -1530,63 +1212,12 @@ body {
     </section>
 
 
-    <!-- 下一個紀念日 -->
+    <!-- =========================================
+         月曆
+    ========================================== -->
 
-    <section class="card next-card">
+    <section class="calendar-card">
 
-        <div class="card-title">
-
-            <div class="card-title-left">
-
-                <div class="card-icon">
-                    🎀
-                </div>
-
-                <h2>
-                    下一個紀念日
-                </h2>
-
-            </div>
-
-            <span>
-                豆包 × 兔飽飽
-            </span>
-
-        </div>
-
-
-        <div
-            class="next-type"
-            id="nextType">
-
-            下一個50天里程碑
-
-        </div>
-
-
-        <div
-            class="next-number"
-            id="nextMilestone">
-
-            50 天
-
-        </div>
-
-
-        <div
-            class="next-desc"
-            id="nextText">
-
-            再一起走一段，就到下一個紀念日啦 💗
-
-        </div>
-
-    </section>
-
-
-    <!-- 月曆 -->
-
-    <section class="card">
 
         <div class="calendar-header">
 
@@ -1599,9 +1230,17 @@ body {
             </button>
 
 
-            <div
-                class="month-title"
-                id="monthTitle">
+            <div class="month-title">
+
+                <div
+                    class="month-main"
+                    id="monthTitle">
+
+                </div>
+
+                <div class="month-sub">
+                    豆包 × 兔飽飽粉絲月曆
+                </div>
 
             </div>
 
@@ -1636,437 +1275,175 @@ body {
 
         </div>
 
-    </section>
 
+        <div class="legend">
 
-    <!-- 簡單里程碑預覽 -->
+            <div class="legend-item">
 
-    <section class="card">
-
-        <div class="card-title">
-
-            <div class="card-title-left">
-
-                <div class="card-icon">
-                    💗
+                <div
+                    class="legend-dot legend-today">
                 </div>
 
-                <h2>
-                    近期里程碑
-                </h2>
+                今天
 
             </div>
 
-            <span>
-                點下方 💗 查看全部
-            </span>
 
-        </div>
+            <div class="legend-item">
 
-
-        <div
-            class="milestone-list"
-            id="homeMilestoneList">
-
-        </div>
-
-    </section>
-
-
-</section>
-
-
-
-<!-- =================================
-     💗 第二頁：今日粉絲小語
-================================= -->
-
-<section
-    class="page"
-    id="page-blessing">
-
-
-    <section class="card quote-hero">
-
-        <div class="quote-icon">
-            💕
-        </div>
-
-
-        <div
-            class="quote-day"
-            id="quoteDay">
-
-            今天是粉絲第 1 天
-
-        </div>
-
-
-        <div
-            class="quote-main"
-            id="quoteMain">
-
-            每一天的喜歡，都值得被好好記住。
-
-        </div>
-
-
-        <div
-            class="quote-sub"
-            id="quoteSub">
-
-            豆包 × 兔飽飽<br>
-            今天也一起開開心心走下去吧 🫘🐰
-
-        </div>
-
-    </section>
-
-
-
-    <section class="card support-card">
-
-        <div class="support-title">
-            🫘 今日應援小語
-        </div>
-
-
-        <div
-            class="support-text"
-            id="supportText">
-
-            豆你開心，包你長紅。<br>
-            今天也把最好的祝福送給豆包 💗
-
-        </div>
-
-    </section>
-
-
-
-    <section class="card">
-
-        <div class="card-title">
-
-            <div class="card-title-left">
-
-                <div class="card-icon">
-                    ✨
+                <div
+                    class="legend-dot legend-milestone">
                 </div>
 
-                <h2>
-                    今天的小任務
-                </h2>
+                50天
+
+            </div>
+
+
+            <div class="legend-item">
+
+                <div
+                    class="legend-dot legend-year">
+                </div>
+
+                週年
 
             </div>
 
         </div>
 
+    </section>
 
-        <div class="rabbit-message">
 
-            <div class="rabbit-message-title">
-                🐰 兔飽飽今日任務
+    <!-- =========================================
+         點擊日期後的資訊
+    ========================================== -->
+
+    <section class="selected-card">
+
+        <div
+            class="selected-date"
+            id="selectedDate">
+
+            今天
+
+        </div>
+
+        <div
+            class="selected-main"
+            id="selectedMain">
+
+            粉絲第 47 天 💗
+
+        </div>
+
+        <div
+            class="selected-sub"
+            id="selectedSub">
+
+            再一起走 3 天，就是第 50 天啦 ✨
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         最近里程碑
+    ========================================== -->
+
+    <section class="mini-milestones">
+
+
+        <div class="mini-item">
+
+            <div class="mini-icon">
+                💗
             </div>
-
 
             <div
-                class="rabbit-message-text"
-                id="dailyTask">
+                class="mini-number"
+                id="milestone50">
 
-                今天也記得開心追豆包一下 ✨
+                50
 
             </div>
 
+            <div class="mini-label">
+                下一個50天
+            </div>
+
         </div>
+
+
+        <div class="mini-item">
+
+            <div class="mini-icon">
+                🎀
+            </div>
+
+            <div
+                class="mini-number"
+                id="milestone100">
+
+                100
+
+            </div>
+
+            <div class="mini-label">
+                下一個100天
+            </div>
+
+        </div>
+
+
+        <div class="mini-item">
+
+            <div class="mini-icon">
+                🎂
+            </div>
+
+            <div
+                class="mini-number"
+                id="nextYear">
+
+                365
+
+            </div>
+
+            <div class="mini-label">
+                第一個週年
+            </div>
+
+        </div>
+
 
     </section>
 
 
-</section>
+    <div class="footer">
 
+        🫘 <strong>豆包</strong>
+        ×
+        🐰 <strong>兔飽飽</strong>
 
+        <br>
 
-<!-- =================================
-     🐰 第三頁：兔飽飽小天地
-================================= -->
+        一起走過的每一天，都算數 💗
 
-<section
-    class="page"
-    id="page-bunny">
+    </div>
 
 
-    <section class="card bunny-card">
-
-        <div class="big-bunny">
-            🐰
-        </div>
-
-
-        <div class="bunny-title">
-            兔飽飽小天地
-        </div>
-
-
-        <div class="bunny-text">
-
-            這裡是屬於豆包 × 兔飽飽的小角落。<br>
-            把喜歡、紀念日和每一個重要時刻收藏起來 ✨
-
-        </div>
-
-
-        <div class="slogan">
-
-            🫘 豆你開心　🐰 包你長紅
-
-        </div>
-
-    </section>
-
-
-
-    <!-- 粉絲資料 -->
-
-    <section class="card">
-
-        <div class="card-title">
-
-            <div class="card-title-left">
-
-                <div class="card-icon">
-                    💗
-                </div>
-
-                <h2>
-                    我們的粉絲紀錄
-                </h2>
-
-            </div>
-
-        </div>
-
-
-        <div class="info-grid">
-
-
-            <div class="info-box">
-
-                <div class="info-icon">
-                    🫘
-                </div>
-
-                <div
-                    class="info-number"
-                    id="bunnyFanDay">
-
-                    0
-
-                </div>
-
-                <div class="info-label">
-                    今天是第幾天
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="info-icon">
-                    💗
-                </div>
-
-                <div
-                    class="info-number"
-                    id="bunnyMilestoneCount">
-
-                    0
-
-                </div>
-
-                <div class="info-label">
-                    已完成50天里程碑
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="info-icon">
-                    🎂
-                </div>
-
-                <div
-                    class="info-number"
-                    id="bunnyYearCount">
-
-                    0
-
-                </div>
-
-                <div class="info-label">
-                    已完成週年
-                </div>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <div class="info-icon">
-                    ✨
-                </div>
-
-                <div
-                    class="info-number"
-                    id="bunnyNextDay">
-
-                    50
-
-                </div>
-
-                <div class="info-label">
-                    下一個紀念日
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- 專屬宣言 -->
-
-    <section class="card rabbit-message">
-
-        <div class="rabbit-message-title">
-            🐰 兔飽飽的專屬宣言
-        </div>
-
-
-        <div class="rabbit-message-text">
-
-            喜歡不是一天兩天，<br>
-
-            是把好多好多天，<br>
-
-            慢慢變成值得收藏的回憶。💗<br><br>
-
-            🫘 豆包 × 🐰 兔飽飽<br>
-
-            一起走過的每一天，都算數。
-
-        </div>
-
-    </section>
-
-
-
-    <!-- 里程碑 -->
-
-    <section class="card">
-
-        <div class="card-title">
-
-            <div class="card-title-left">
-
-                <div class="card-icon">
-                    🎀
-                </div>
-
-                <h2>
-                    完整里程碑
-                </h2>
-
-            </div>
-
-            <span>
-                50天＋週年
-            </span>
-
-        </div>
-
-
-        <div
-            class="milestone-list"
-            id="milestoneList">
-
-        </div>
-
-    </section>
-
-
-</section>
-
-
-</main>
-
-
-
-<!-- =================================
-     底部導覽
-================================= -->
-
-<nav class="bottom-nav">
-
-
-    <button
-        class="nav-btn active"
-        id="navCalendar"
-        onclick="showPage('calendar')">
-
-        <span>
-            🫘
-        </span>
-
-        日曆
-
-    </button>
-
-
-    <button
-        class="nav-btn"
-        id="navBlessing"
-        onclick="showPage('blessing')">
-
-        <span>
-            💗
-        </span>
-
-        今日小語
-
-    </button>
-
-
-    <button
-        class="nav-btn"
-        id="navBunny"
-        onclick="showPage('bunny')">
-
-        <span>
-            🐰
-        </span>
-
-        兔飽飽
-
-    </button>
-
-
-</nav>
-
+</div>
 
 
 <script>
 
 
-/* =================================
+/* ==================================================
    基本設定
-================================= */
+================================================== */
+
 
 const startDate =
     new Date(
@@ -2076,65 +1453,55 @@ const startDate =
 
 const MILESTONE_INTERVAL = 50;
 
-
 const ANNIVERSARY_INTERVAL = 365;
 
 
-let currentMonth =
+let currentDate =
     new Date();
 
 
 let currentYear =
-    currentMonth.getFullYear();
+    currentDate.getFullYear();
 
 
-let currentMonthIndex =
-    currentMonth.getMonth();
+let currentMonth =
+    currentDate.getMonth();
 
 
-
-/* =================================
-   粉絲天數
-================================= */
+/* ==================================================
+   計算粉絲天數
+================================================== */
 
 function getFanDay(date) {
 
     const start =
         new Date(startDate);
 
-
     const target =
         new Date(date);
 
-
     start.setHours(0,0,0,0);
-
 
     target.setHours(0,0,0,0);
 
-
     return Math.floor(
-
         (
             target - start
         ) /
-
         (
             1000 *
             60 *
             60 *
             24
         )
-
     ) + 1;
 
 }
 
 
-
-/* =================================
-   週年
-================================= */
+/* ==================================================
+   判斷週年
+================================================== */
 
 function isAnniversary(days) {
 
@@ -2146,22 +1513,24 @@ function isAnniversary(days) {
 }
 
 
-
-/* =================================
+/* ==================================================
    下一個50天
-================================= */
+================================================== */
 
 function getNext50Day(days) {
 
     let next =
         Math.ceil(
-            days / MILESTONE_INTERVAL
-        ) *
+            days /
+            MILESTONE_INTERVAL
+        )
+        *
         MILESTONE_INTERVAL;
 
 
     if (
-        days % MILESTONE_INTERVAL === 0
+        days %
+        MILESTONE_INTERVAL === 0
     ) {
 
         next +=
@@ -2175,10 +1544,9 @@ function getNext50Day(days) {
 }
 
 
-
-/* =================================
+/* ==================================================
    下一個週年
-================================= */
+================================================== */
 
 function getNextAnniversary(days) {
 
@@ -2194,123 +1562,18 @@ function getNextAnniversary(days) {
 }
 
 
+/* ==================================================
+   更新頂部資訊
+================================================== */
 
-/* =================================
-   切換三個頁面
-================================= */
-
-function showPage(pageName) {
-
-
-    /*
-       所有頁面先隱藏
-    */
-
-    document
-        .querySelectorAll(".page")
-        .forEach(
-            page => {
-
-                page.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-    /*
-       導覽按鈕取消 active
-    */
-
-    document
-        .querySelectorAll(".nav-btn")
-        .forEach(
-            button => {
-
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-    /*
-       顯示指定頁面
-    */
-
-    const page =
-        document.getElementById(
-            "page-" +
-            pageName
-        );
-
-
-    if (page) {
-
-        page.classList.add(
-            "active"
-        );
-
-    }
-
-
-    /*
-       對應按鈕亮起
-    */
-
-    const nav =
-        document.getElementById(
-            "nav" +
-            pageName.charAt(0).toUpperCase() +
-            pageName.slice(1)
-        );
-
-
-    if (nav) {
-
-        nav.classList.add(
-            "active"
-        );
-
-    }
-
-
-    /*
-       回到頁面最上方
-    */
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-}
-
-
-
-/* =================================
-   今日資訊
-================================= */
-
-function updateToday() {
-
+function updateMainInfo() {
 
     const today =
         new Date();
 
-
     const days =
         getFanDay(today);
 
-
-    /*
-       主畫面
-    */
 
     document.getElementById(
         "fanDay"
@@ -2319,64 +1582,16 @@ function updateToday() {
 
 
     /*
-       兔飽飽頁面
-    */
-
-    document.getElementById(
-        "bunnyFanDay"
-    ).textContent =
-        days;
-
-
-    /*
-       週年
-    */
-
-    const anniversaryBadge =
-        document.getElementById(
-            "anniversaryBadge"
-        );
-
-
-    if (
-        isAnniversary(days)
-    ) {
-
-
-        const year =
-            days /
-            ANNIVERSARY_INTERVAL;
-
-
-        anniversaryBadge.innerHTML =
-
-            "🎂 今天是第 " +
-            year +
-            " 週年！　💗";
-
-
-        anniversaryBadge.classList.add(
-            "show"
-        );
-
-
-    } else {
-
-        anniversaryBadge.classList.remove(
-            "show"
-        );
-
-    }
-
-
-
-    /*
-       下一個紀念日
+       下一個50天
     */
 
     const next50 =
         getNext50Day(days);
 
+
+    /*
+       下一個週年
+    */
 
     const nextYear =
         getNextAnniversary(days);
@@ -2384,9 +1599,9 @@ function updateToday() {
 
     let nextDay;
 
-    let nextType;
+    let nextTitle;
 
-    let previousDay;
+    let icon;
 
 
     if (
@@ -2397,12 +1612,15 @@ function updateToday() {
         nextDay =
             nextYear;
 
-        nextType =
-            "🎂 下一個週年";
+        nextTitle =
+            "第 " +
+            (
+                nextYear /
+                ANNIVERSARY_INTERVAL
+            ) +
+            " 週年";
 
-        previousDay =
-            nextYear -
-            ANNIVERSARY_INTERVAL;
+        icon = "🎂";
 
     }
 
@@ -2411,376 +1629,76 @@ function updateToday() {
         nextDay =
             next50;
 
-        nextType =
-            "💗 下一個50天里程碑";
+        nextTitle =
+            "第 " +
+            next50 +
+            " 天";
 
-        previousDay =
-            next50 -
-            MILESTONE_INTERVAL;
+        icon = "💗";
 
     }
 
 
     const remaining =
-        nextDay -
-        days;
+        nextDay - days;
+
+
+    document.getElementById(
+        "nextIcon"
+    ).textContent =
+        icon;
+
+
+    document.getElementById(
+        "nextTitle"
+    ).textContent =
+        nextTitle;
+
+
+    document.getElementById(
+        "remainingDays"
+    ).textContent =
+
+        remaining === 0
+        ? "就是今天！"
+        : "還有 " + remaining + " 天";
 
 
     /*
-       進度
+       最近50天
     */
 
-    let progress =
-        (
-            (days - previousDay) /
-            (nextDay - previousDay)
-        )
-        *
-        100;
-
-
-    progress =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                progress
-            )
-        );
-
-
     document.getElementById(
-        "nextType"
+        "milestone50"
     ).textContent =
-        nextType;
-
-
-    document.getElementById(
-        "nextMilestone"
-    ).textContent =
-        nextDay +
-        " 天";
-
-
-    document.getElementById(
-        "nextText"
-    ).textContent =
-
-        "再 " +
-        remaining +
-        " 天，就到下一個紀念日啦 💗";
-
-
-    document.getElementById(
-        "progressFill"
-    ).style.width =
-        progress +
-        "%";
-
-
-    document.getElementById(
-        "progressPercent"
-    ).textContent =
-        Math.round(
-            progress
-        ) +
-        "%";
-
-
-    document.getElementById(
-        "progressText"
-    ).textContent =
-
-        "距離 " +
-        nextDay +
-        " 天";
+        next50;
 
 
     /*
-       計算已完成數量
+       再下一個50天
     */
 
-    const milestoneCount =
-        Math.floor(
-            days /
-            MILESTONE_INTERVAL
-        );
-
-
-    const yearCount =
-        Math.floor(
-            days /
-            ANNIVERSARY_INTERVAL
-        );
-
-
     document.getElementById(
-        "bunnyMilestoneCount"
+        "milestone100"
     ).textContent =
-        milestoneCount;
-
-
-    document.getElementById(
-        "bunnyYearCount"
-    ).textContent =
-        yearCount;
-
-
-    document.getElementById(
-        "bunnyNextDay"
-    ).textContent =
-        nextDay;
+        next50 + 50;
 
 
     /*
-       今日小語
+       下一個週年
     */
 
-    updateBlessing(days);
-
-
-    /*
-       里程碑
-    */
-
-    renderMilestones(days);
+    document.getElementById(
+        "nextYear"
+    ).textContent =
+        nextYear;
 
 }
 
 
-
-/* =================================
-   今日粉絲小語
-================================= */
-
-const fanQuotes = [
-
-    [
-        "每一天的喜歡，都值得被好好記住。",
-        "今天也一起開開心心走下去吧 🫘🐰",
-        "豆你開心，包你長紅。💗"
-    ],
-
-    [
-        "喜歡不是一天兩天，而是好多天累積起來的心意。",
-        "兔飽飽今天也要繼續陪著豆包呀 ✨",
-        "願每一次相遇，都剛好值得收藏。"
-    ],
-
-    [
-        "今天的粉絲日，也要認真發光。",
-        "小小的喜歡，也可以累積成很長很長的故事。",
-        "🫘 豆包加油！🐰 兔飽飽一直都在！"
-    ],
-
-    [
-        "日子會往前走，但喜歡可以一直留下來。",
-        "今天也是值得紀念的一天。",
-        "把今天的快樂，好好收藏起來吧 💕"
-    ],
-
-    [
-        "從第一天開始，到現在的每一天，都算數。",
-        "謝謝每一次讓人心動的瞬間。",
-        "兔飽飽的喜歡，今天也準時送達 🐰💌"
-    ],
-
-    [
-        "如果喜歡有形狀，大概就是一個又一個被記住的日子。",
-        "今天也給自己一點小小的快樂吧 🌸",
-        "豆包 × 兔飽飽，繼續一起走。"
-    ],
-
-    [
-        "今天不是普通的一天，是我們一起走過的第 N 天。",
-        "把平凡的日子過成值得紀念的日子。",
-        "🫘💗🐰"
-    ]
-
-];
-
-
-function updateBlessing(days) {
-
-
-    /*
-       根據日期自動選一句
-       同一天看到的內容會固定
-    */
-
-    const today =
-        new Date();
-
-
-    const daySeed =
-        today.getFullYear() *
-        10000 +
-        (today.getMonth() + 1) *
-        100 +
-        today.getDate();
-
-
-    const index =
-        daySeed %
-        fanQuotes.length;
-
-
-    const quote =
-        fanQuotes[index];
-
-
-    /*
-       如果是週年
-    */
-
-    if (
-        isAnniversary(days)
-    ) {
-
-
-        const year =
-            days /
-            ANNIVERSARY_INTERVAL;
-
-
-        document.getElementById(
-            "quoteMain"
-        ).textContent =
-
-            "🎂 今天是我們的第 " +
-            year +
-            " 週年！";
-
-
-        document.getElementById(
-            "quoteSub"
-        ).innerHTML =
-
-            "🫘 豆包 × 🐰 兔飽飽<br>" +
-            "這一天一定要好好記住。💗";
-
-
-        document.getElementById(
-            "supportText"
-        ).innerHTML =
-
-            "🎉 週年快樂！<br>" +
-            "願下一個365天，也繼續收藏好多好多快樂。";
-
-
-    }
-
-    /*
-       50天
-    */
-
-    else if (
-        days %
-        MILESTONE_INTERVAL === 0
-    ) {
-
-
-        document.getElementById(
-            "quoteMain"
-        ).textContent =
-
-            "🎉 今天是第 " +
-            days +
-            " 天！";
-
-
-        document.getElementById(
-            "quoteSub"
-        ).innerHTML =
-
-            "又完成一個小小的里程碑啦 💗<br>" +
-            "兔飽飽和豆包繼續一起走！";
-
-
-        document.getElementById(
-            "supportText"
-        ).innerHTML =
-
-            "💗 第 " +
-            days +
-            " 天紀念日！<br>" +
-            "把今天的快樂好好收藏起來吧 ✨";
-
-    }
-
-    else {
-
-
-        document.getElementById(
-            "quoteMain"
-        ).textContent =
-            quote[0];
-
-
-        document.getElementById(
-            "quoteSub"
-        ).innerHTML =
-            quote[1];
-
-
-        document.getElementById(
-            "supportText"
-        ).innerHTML =
-            quote[2];
-
-    }
-
-
-    document.getElementById(
-        "quoteDay"
-    ).textContent =
-
-        "今天是粉絲第 " +
-        days +
-        " 天";
-
-
-
-    /*
-       今日小任務
-    */
-
-    const tasks = [
-
-        "今天也記得開心追豆包一下 ✨",
-
-        "去看看豆包今天有沒有新的動態吧 🫘",
-
-        "給自己一個小小的快樂，再繼續追星 💗",
-
-        "今天也把喜歡變成一點點好心情 🌸",
-
-        "記得喝水、休息，也不要忘記豆包 🐰",
-
-        "把今天值得收藏的瞬間記下來 ✨",
-
-        "兔飽飽今日任務：開心就好！💗"
-
-    ];
-
-
-    const taskIndex =
-        daySeed %
-        tasks.length;
-
-
-    document.getElementById(
-        "dailyTask"
-    ).textContent =
-        tasks[taskIndex];
-
-}
-
-
-
-/* =================================
+/* ==================================================
    月曆
-================================= */
+================================================== */
 
 function renderCalendar() {
 
@@ -2794,6 +1712,10 @@ function renderCalendar() {
     calendar.innerHTML = "";
 
 
+    /*
+       月份標題
+    */
+
     document.getElementById(
         "monthTitle"
     ).textContent =
@@ -2801,27 +1723,51 @@ function renderCalendar() {
         currentYear +
         " 年 " +
         (
-            currentMonthIndex +
-            1
+            currentMonth + 1
         ) +
         " 月";
 
 
+    /*
+       當月第一天星期
+    */
+
     const firstDay =
         new Date(
             currentYear,
-            currentMonthIndex,
+            currentMonth,
             1
         ).getDay();
 
 
+    /*
+       當月天數
+    */
+
     const daysInMonth =
         new Date(
             currentYear,
-            currentMonthIndex + 1,
+            currentMonth + 1,
             0
         ).getDate();
 
+
+    /*
+       今天
+    */
+
+    const today =
+        new Date();
+
+
+    today.setHours(
+        0,0,0,0
+    );
+
+
+    /*
+       空白格
+    */
 
     for (
         let i = 0;
@@ -2829,16 +1775,13 @@ function renderCalendar() {
         i++
     ) {
 
-
         const empty =
             document.createElement(
                 "div"
             );
 
-
         empty.className =
             "day empty";
-
 
         calendar.appendChild(
             empty
@@ -2847,9 +1790,9 @@ function renderCalendar() {
     }
 
 
-    const today =
-        new Date();
-
+    /*
+       每一天
+    */
 
     for (
         let day = 1;
@@ -2861,9 +1804,14 @@ function renderCalendar() {
         const date =
             new Date(
                 currentYear,
-                currentMonthIndex,
+                currentMonth,
                 day
             );
+
+
+        date.setHours(
+            0,0,0,0
+        );
 
 
         const fanDay =
@@ -2880,9 +1828,13 @@ function renderCalendar() {
             "day";
 
 
+        /*
+           今天
+        */
+
         if (
-            date.toDateString() ===
-            today.toDateString()
+            date.getTime() ===
+            today.getTime()
         ) {
 
             cell.classList.add(
@@ -2891,6 +1843,10 @@ function renderCalendar() {
 
         }
 
+
+        /*
+           未來
+        */
 
         if (
             date > today
@@ -2903,82 +1859,125 @@ function renderCalendar() {
         }
 
 
+        /*
+           週年
+        */
+
         const anniversary =
             isAnniversary(
                 fanDay
             );
 
 
+        /*
+           50天
+        */
+
         const milestone50 =
 
             fanDay > 0 &&
+
             fanDay %
             MILESTONE_INTERVAL ===
             0;
 
 
+        /*
+           週年樣式
+        */
+
         if (
             anniversary
         ) {
-
 
             cell.classList.add(
                 "anniversary"
             );
 
-
-            cell.innerHTML =
-
-                "<div>" +
-                day +
-                "</div>" +
-
-                "<div class='milestone-text'>" +
-
-                fanDay +
-
-                "🎂" +
-
-                "</div>";
-
         }
+
+        /*
+           50天樣式
+        */
 
         else if (
             milestone50
         ) {
 
-
             cell.classList.add(
                 "milestone"
             );
 
+        }
 
-            cell.innerHTML =
 
-                "<div>" +
-                day +
-                "</div>" +
+        /*
+           日期內容
+        */
 
-                "<div class='milestone-text'>" +
+        let content =
 
+            "<div>" +
+            day +
+            "</div>";
+
+
+        /*
+           入粉日之後才顯示粉絲天數
+        */
+
+        if (
+            fanDay >= 1
+        ) {
+
+            let symbol = "";
+
+            if (
+                anniversary
+            ) {
+
+                symbol = " 🎂";
+
+            }
+
+            else if (
+                milestone50
+            ) {
+
+                symbol = " 💗";
+
+            }
+
+
+            content +=
+
+                "<div class='fan-day-number'>" +
                 fanDay +
-
-                "💗" +
-
+                symbol +
                 "</div>";
 
         }
 
-        else {
+
+        cell.innerHTML =
+            content;
 
 
-            cell.innerHTML =
+        /*
+           點擊日期
+        */
 
-                "<div>" +
-                day +
-                "</div>";
+        cell.addEventListener(
+            "click",
+            () => {
 
-        }
+                showSelectedDate(
+                    date,
+                    fanDay
+                );
+
+            }
+        );
 
 
         calendar.appendChild(
@@ -2990,23 +1989,185 @@ function renderCalendar() {
 }
 
 
+/* ==================================================
+   點擊日期後顯示資訊
+================================================== */
 
-/* =================================
+function showSelectedDate(
+    date,
+    fanDay
+) {
+
+
+    const year =
+        date.getFullYear();
+
+
+    const month =
+        date.getMonth() + 1;
+
+
+    const day =
+        date.getDate();
+
+
+    document.getElementById(
+        "selectedDate"
+    ).textContent =
+
+        year +
+        " 年 " +
+        month +
+        " 月 " +
+        day +
+        " 日";
+
+
+    /*
+       還沒入粉
+    */
+
+    if (
+        fanDay < 1
+    ) {
+
+        document.getElementById(
+            "selectedMain"
+        ).textContent =
+            "還沒成為粉絲 🐰";
+
+
+        document.getElementById(
+            "selectedSub"
+        ).textContent =
+            "2026 年 8 月 4 日才是我們的第一天 💗";
+
+
+        return;
+
+    }
+
+
+    /*
+       週年
+    */
+
+    if (
+        isAnniversary(fanDay)
+    ) {
+
+        const yearCount =
+            fanDay /
+            ANNIVERSARY_INTERVAL;
+
+
+        document.getElementById(
+            "selectedMain"
+        ).textContent =
+
+            "🎂 第 " +
+            yearCount +
+            " 週年！";
+
+
+        document.getElementById(
+            "selectedSub"
+        ).textContent =
+
+            "豆包 × 兔飽飽，一起走過 " +
+            fanDay +
+            " 天 💗";
+
+
+        return;
+
+    }
+
+
+    /*
+       50天
+    */
+
+    if (
+        fanDay %
+        MILESTONE_INTERVAL ===
+        0
+    ) {
+
+        document.getElementById(
+            "selectedMain"
+        ).textContent =
+
+            "💗 粉絲第 " +
+            fanDay +
+            " 天！";
+
+
+        document.getElementById(
+            "selectedSub"
+        ).textContent =
+
+            "又完成一個值得收藏的里程碑啦 ✨";
+
+
+        return;
+
+    }
+
+
+    /*
+       一般日期
+    */
+
+    const next50 =
+        getNext50Day(fanDay);
+
+
+    const remaining =
+        next50 -
+        fanDay;
+
+
+    document.getElementById(
+        "selectedMain"
+    ).textContent =
+
+        "粉絲第 " +
+        fanDay +
+        " 天 💗";
+
+
+    document.getElementById(
+        "selectedSub"
+    ).textContent =
+
+        "再 " +
+        remaining +
+        " 天，就是第 " +
+        next50 +
+        " 天啦 ✨";
+
+}
+
+
+/* ==================================================
    月份切換
-================================= */
+================================================== */
 
-function changeMonth(offset) {
+function changeMonth(
+    offset
+) {
 
 
-    currentMonthIndex +=
+    currentMonth +=
         offset;
 
 
     if (
-        currentMonthIndex < 0
+        currentMonth < 0
     ) {
 
-        currentMonthIndex = 11;
+        currentMonth = 11;
 
         currentYear--;
 
@@ -3014,10 +2175,10 @@ function changeMonth(offset) {
 
 
     if (
-        currentMonthIndex > 11
+        currentMonth > 11
     ) {
 
-        currentMonthIndex = 0;
+        currentMonth = 0;
 
         currentYear++;
 
@@ -3029,305 +2190,35 @@ function changeMonth(offset) {
 }
 
 
-
-/* =================================
-   里程碑
-================================= */
-
-function renderMilestones(days) {
-
-
-    const list =
-        document.getElementById(
-            "milestoneList"
-        );
-
-
-    const homeList =
-        document.getElementById(
-            "homeMilestoneList"
-        );
-
-
-    list.innerHTML = "";
-
-    homeList.innerHTML = "";
-
-
-    const milestones = [];
-
-
-    for (
-        let i = 50;
-        i <= 1000;
-        i += 50
-    ) {
-
-        milestones.push({
-
-            day: i,
-
-            type: "50"
-
-        });
-
-    }
-
-
-    for (
-        let i = 365;
-        i <= 3650;
-        i += 365
-    ) {
-
-        milestones.push({
-
-            day: i,
-
-            type: "year"
-
-        });
-
-    }
-
-
-    milestones.sort(
-        (a,b) =>
-            a.day - b.day
-    );
-
-
-    /*
-       完整列表
-    */
-
-    milestones.forEach(
-        milestone => {
-
-
-        const item =
-            createMilestoneItem(
-                milestone,
-                days
-            );
-
-
-        list.appendChild(
-            item
-        );
-
-    });
-
-
-
-    /*
-       首頁只顯示最近幾個
-    */
-
-    const upcoming =
-        milestones
-            .filter(
-                m =>
-                    m.day >= days
-            )
-            .slice(0,3);
-
-
-    if (
-        upcoming.length === 0
-    ) {
-
-        milestones
-            .slice(-3)
-            .forEach(
-                milestone => {
-
-                    homeList.appendChild(
-                        createMilestoneItem(
-                            milestone,
-                            days
-                        )
-                    );
-
-                }
-            );
-
-    }
-
-    else {
-
-        upcoming.forEach(
-            milestone => {
-
-                homeList.appendChild(
-                    createMilestoneItem(
-                        milestone,
-                        days
-                    )
-                );
-
-            }
-        );
-
-    }
-
-}
-
-
-
-/* =================================
-   建立里程碑項目
-================================= */
-
-function createMilestoneItem(
-    milestone,
-    days
-) {
-
-
-    const item =
-        document.createElement(
-            "div"
-        );
-
-
-    item.className =
-        "milestone-item";
-
-
-    if (
-        milestone.type ===
-        "year"
-    ) {
-
-        item.classList.add(
-            "anniversary-item"
-        );
-
-    }
-
-
-    const reached =
-        days >=
-        milestone.day;
-
-
-    let title;
-
-    let description;
-
-    let icon;
-
-
-    if (
-        milestone.type ===
-        "year"
-    ) {
-
-
-        const year =
-            milestone.day /
-            ANNIVERSARY_INTERVAL;
-
-
-        title =
-            "第 " +
-            year +
-            " 週年 🎂";
-
-
-        description =
-            reached
-            ? "已經一起走過這個週年啦 ✨"
-            : "未來值得期待的週年";
-
-
-        icon = "🎂";
-
-    }
-
-    else {
-
-
-        title =
-            "粉絲第 " +
-            milestone.day +
-            " 天";
-
-
-        description =
-            reached
-            ? "已經一起走過啦 ✨"
-            : "未來值得期待的紀念日";
-
-
-        icon = "💗";
-
-    }
-
-
-    item.innerHTML = `
-
-        <div class="milestone-icon">
-
-            ${
-                reached
-                ? icon
-                : "🎀"
-            }
-
-        </div>
-
-
-        <div class="milestone-info">
-
-            <strong>
-                ${title}
-            </strong>
-
-            <small>
-                ${description}
-            </small>
-
-        </div>
-
-
-        <div class="done">
-
-            ${
-                reached
-                ? "✓"
-                : "♡"
-            }
-
-        </div>
-
-    `;
-
-
-    return item;
-
-}
-
-
-
-/* =================================
+/* ==================================================
    啟動
-================================= */
+================================================== */
 
-updateToday();
+updateMainInfo();
 
 renderCalendar();
 
 
 /*
-   每分鐘更新
+   啟動時直接顯示今天
 */
+
+showSelectedDate(
+    new Date(),
+    getFanDay(
+        new Date()
+    )
+);
+
+
+/* ==================================================
+   每分鐘更新
+================================================== */
 
 setInterval(
     () => {
 
-        updateToday();
+        updateMainInfo();
 
         renderCalendar();
 
@@ -3336,24 +2227,9 @@ setInterval(
 );
 
 
-/*
+/* ==================================================
    飄愛心
-*/
-
-setInterval(
-    () => {
-
-        createHeart();
-
-    },
-    6500
-);
-
-
-
-/* =================================
-   愛心動畫
-================================= */
+================================================== */
 
 function createHeart() {
 
@@ -3391,21 +2267,23 @@ function createHeart() {
 
     heart.style.left =
 
-        Math.random() *
-        100 +
+        (
+            Math.random() *
+            100
+        ) +
         "vw";
 
 
     heart.style.bottom =
-        "75px";
+        "25px";
 
 
     heart.style.fontSize =
 
         (
-            14 +
+            13 +
             Math.random() *
-            12
+            10
         ) +
         "px";
 
@@ -3426,9 +2304,16 @@ function createHeart() {
 
 }
 
-</script>
 
+setInterval(
+    createHeart,
+    6500
+);
+
+
+</script>
 
 </body>
 
 </html>
+
