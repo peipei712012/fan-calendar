@@ -814,10 +814,11 @@ body {
 
 
 /* ==================================================
-   週年
+   週年與生日
 ================================================== */
 
-.day.anniversary {
+.day.anniversary,
+.day.birthday {
 
     background:
         linear-gradient(
@@ -834,7 +835,8 @@ body {
 
 }
 
-.day.anniversary .fan-day-number {
+.day.anniversary .fan-day-number,
+.day.birthday .fan-day-number {
 
     color: #a35e6f;
 
@@ -842,7 +844,8 @@ body {
 
 }
 
-.day.anniversary::after {
+.day.anniversary::after,
+.day.birthday::after {
 
     content: "🎂";
 
@@ -1263,7 +1266,7 @@ body {
 
             <div class="day-description">
 
-                今天是粉絲第幾天 💕
+                今天 automation 粉絲第幾天 💕
 
             </div>
 
@@ -1425,7 +1428,7 @@ body {
                     class="legend-dot legend-year">
                 </div>
 
-                週年
+                週年 / 生日
 
             </div>
 
@@ -1607,6 +1610,9 @@ window.addEventListener('DOMContentLoaded', () => {
 ================================================== */
 
 const startDate = new Date("2026-08-05T00:00:00");
+const BIRTHDAY_MONTH = 9; // JavaScript 月份為 0-11，10 月即為索引 9
+const BIRTHDAY_DAY = 3;   // 3 日
+const BIRTH_YEAR = 2007;  // 豆包出生年份
 
 const MILESTONE_INTERVAL = 50;
 const ANNIVERSARY_INTERVAL = 365;
@@ -1630,16 +1636,20 @@ function getFanDay(date) {
 
 
 /* ==================================================
-   判斷週年
+   判斷週年與生日
 ================================================== */
 
 function isAnniversary(days) {
     return (days > 0 && days % ANNIVERSARY_INTERVAL === 0);
 }
 
+function isDoubaoBirthday(date) {
+    return date.getMonth() === BIRTHDAY_MONTH && date.getDate() === BIRTHDAY_DAY;
+}
+
 
 /* ==================================================
-   下一個50天
+   下一個里程碑與生日計算
 ================================================== */
 
 function getNext50Day(days) {
@@ -1650,13 +1660,27 @@ function getNext50Day(days) {
     return next;
 }
 
-
-/* ==================================================
-   下一個週年
-================================================== */
-
 function getNextAnniversary(days) {
     return (Math.floor(days / ANNIVERSARY_INTERVAL) + 1) * ANNIVERSARY_INTERVAL;
+}
+
+// 計算距離下一次生日的天數
+function getNextBirthdayInfo(today) {
+    let targetYear = today.getFullYear();
+    let bday = new Date(targetYear, BIRTHDAY_MONTH, BIRTHDAY_DAY);
+    bday.setHours(0,0,0,0);
+    
+    // 如果今年的生日已經過了，計算下一年的生日
+    if (today > bday) {
+        bday.setFullYear(targetYear + 1);
+    }
+    
+    const diffDays = Math.ceil((bday - today) / (1000 * 60 * 60 * 24));
+    return {
+        date: bday,
+        remainingDays: diffDays,
+        age: bday.getFullYear() - BIRTH_YEAR
+    };
 }
 
 
@@ -1666,28 +1690,35 @@ function getNextAnniversary(days) {
 
 function updateMainInfo() {
     const today = new Date();
+    today.setHours(0,0,0,0);
     const days = getFanDay(today);
 
     document.getElementById("fanDay").textContent = days;
 
     const next50 = getNext50Day(days);
     const nextYear = getNextAnniversary(days);
+    const birthdayInfo = getNextBirthdayInfo(today);
 
-    let nextDay;
-    let nextTitle;
-    let icon;
+    // 計算下一個 50 天與週年對應的剩餘日
+    const remaining50 = next50 - days;
+    const remainingAnniversary = nextYear - days;
 
-    if (nextYear < next50) {
-        nextDay = nextYear;
+    let remaining = remaining50;
+    let nextTitle = "第 " + next50 + " 天";
+    let icon = "💗";
+
+    // 比對三者（50天、週年、生日）誰最先到來
+    if (remainingAnniversary < remaining) {
+        remaining = remainingAnniversary;
         nextTitle = "第 " + (nextYear / ANNIVERSARY_INTERVAL) + " 週年";
         icon = "🎂";
-    } else {
-        nextDay = next50;
-        nextTitle = "第 " + next50 + " 天";
-        icon = "💗";
     }
 
-    const remaining = nextDay - days;
+    if (birthdayInfo.remainingDays < remaining) {
+        remaining = birthdayInfo.remainingDays;
+        nextTitle = "豆包生日 🎂";
+        icon = "🎂";
+    }
 
     document.getElementById("nextIcon").textContent = icon;
     document.getElementById("nextTitle").textContent = nextTitle;
@@ -1739,8 +1770,11 @@ function renderCalendar() {
 
         const anniversary = isAnniversary(fanDay);
         const milestone50 = fanDay > 0 && fanDay % MILESTONE_INTERVAL === 0;
+        const birthday = isDoubaoBirthday(date);
 
-        if (anniversary) {
+        if (birthday) {
+            cell.classList.add("birthday");
+        } else if (anniversary) {
             cell.classList.add("anniversary");
         } else if (milestone50) {
             cell.classList.add("milestone");
@@ -1748,7 +1782,9 @@ function renderCalendar() {
 
         let content = "<div>" + day + "</div>";
 
-        if (fanDay >= 1) {
+        if (birthday) {
+            content += "<div class='fan-day-number'>豆包生日 🎂</div>";
+        } else if (fanDay >= 1) {
             let symbol = "";
             if (anniversary) {
                 symbol = " 🎂";
@@ -1779,6 +1815,14 @@ function showSelectedDate(date, fanDay) {
     const day = date.getDate();
 
     document.getElementById("selectedDate").textContent = year + " 年 " + month + " 月 " + day + " 日";
+
+    // 優先判斷是否為生日
+    if (isDoubaoBirthday(date)) {
+        const age = year - BIRTH_YEAR;
+        document.getElementById("selectedMain").textContent = "🎂 豆包生日快樂！";
+        document.getElementById("selectedSub").textContent = "今天是豆包的 " + age + " 歲生日 ✨ 陪伴是最長情的告白 💗";
+        return;
+    }
 
     if (fanDay < 1) {
         document.getElementById("selectedMain").textContent = "還沒成為粉絲 🐰";
@@ -1855,12 +1899,12 @@ setInterval(() => {
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
-    const emojis = ["💗", "💕", "💖", "✨", "🌸"];
+    const emojis = ["💗", "💕", "💖", "✨", "🌸", "🎂"];
 
     heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    heart.style.left = (Math.random() * 100) + "vw";
-    heart.style.bottom = "25px";
-    heart.style.fontSize = (13 + Math.random() * 10) + "px";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "0px";
+    heart.style.fontSize = (Math.random() * 12 + 16) + "px";
 
     document.body.appendChild(heart);
 
@@ -1869,7 +1913,7 @@ function createHeart() {
     }, 4000);
 }
 
-setInterval(createHeart, 6500);
+setInterval(createHeart, 2000);
 
 </script>
 
