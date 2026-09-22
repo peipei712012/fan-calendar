@@ -132,17 +132,28 @@ body {
 
     align-items: center;
 
-    gap: 10px;
+    gap: 12px;
+
+}
+
+/* 包含點擊與相機標籤的容器 */
+.logo-container {
+
+    position: relative;
+
+    cursor: pointer;
+
+    display: inline-block;
 
 }
 
 .logo {
 
-    width: 48px;
+    width: 54px;
 
-    height: 48px;
+    height: 54px;
 
-    border-radius: 16px;
+    border-radius: 18px;
 
     display: flex;
 
@@ -158,10 +169,65 @@ body {
         );
 
     box-shadow:
-        0 7px 18px
-        rgba(210,150,190,.20);
+        0 6px 16px
+        rgba(210,150,190,.3);
 
-    font-size: 25px;
+    overflow: hidden;
+
+    border: 2px solid #ffffff;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.logo-container:active .logo {
+
+    transform: scale(0.94);
+
+}
+
+.logo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+/* 右下角小相機提示鈕 */
+.camera-badge {
+
+    position: absolute;
+
+    right: -3px;
+
+    bottom: -3px;
+
+    width: 20px;
+
+    height: 20px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 10px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+
+    border: 1.5px solid #ffe0ec;
+
+    pointer-events: none;
 
 }
 
@@ -327,9 +393,33 @@ body {
 
     margin-top: 7px;
 
-    font-size: 10px;
+    font-size: 11px;
 
     color: #a092a2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+}
+
+.inline-icon {
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 6px;
+
+    object-fit: cover;
+
+    vertical-align: middle;
+
+    display: inline-block;
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
 }
 
@@ -524,6 +614,8 @@ body {
 
     line-height: 1;
 
+    cursor: pointer;
+
 }
 
 .month-btn:active {
@@ -603,6 +695,8 @@ body {
     transition:
         transform .15s ease,
         background .15s ease;
+
+    cursor: pointer;
 
 }
 
@@ -960,7 +1054,27 @@ body {
 
     color: #aaa0ad;
 
-    font-size: 9px;
+    font-size: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 4px;
+
+}
+
+.footer-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
 
 }
 
@@ -1088,6 +1202,8 @@ body {
 
 <div class="app">
 
+    <!-- 隱藏的檔案選擇器 -->
+    <input type="file" id="imageUploader" accept="image/*" style="display: none;">
 
     <!-- =========================================
          HEADER
@@ -1097,8 +1213,11 @@ body {
 
         <div class="brand">
 
-            <div class="logo">
-                🫘
+            <div class="logo-container" onclick="triggerImageUpload()" title="點擊換照片">
+                <div class="logo">
+                    <img id="doubaoImg" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="豆包">
+                </div>
+                <div class="camera-badge">📷</div>
             </div>
 
             <div class="brand-text">
@@ -1150,7 +1269,7 @@ body {
 
             <div class="start-date">
 
-                🫘 始於 2026.08.04
+                <img id="inlineImg1" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="豆包" class="inline-icon"> 始於 2026.08.05
 
             </div>
 
@@ -1333,7 +1452,7 @@ body {
             class="selected-main"
             id="selectedMain">
 
-            粉絲第 47 天 💗
+            粉絲第 1 天 💗
 
         </div>
 
@@ -1341,7 +1460,7 @@ body {
             class="selected-sub"
             id="selectedSub">
 
-            再一起走 3 天，就是第 50 天啦 ✨
+            再一起走 49 天，就是第 50 天啦 ✨
 
         </div>
 
@@ -1423,13 +1542,15 @@ body {
 
     <div class="footer">
 
-        🫘 <strong>豆包</strong>
-        ×
-        🐰 <strong>兔飽飽</strong>
+        <div class="footer-brand">
+            <img id="inlineImg2" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="豆包" class="inline-icon"> <strong>豆包</strong>
+            ×
+            🐰 <strong>兔飽飽</strong>
+        </div>
 
-        <br>
-
-        一起走過的每一天，都算數 💗
+        <div>
+            一起走過的每一天，都算數 💗
+        </div>
 
     </div>
 
@@ -1439,33 +1560,60 @@ body {
 
 <script>
 
+/* ==================================================
+   圖片上傳與儲存邏輯
+================================================== */
+
+const uploader = document.getElementById('imageUploader');
+
+function triggerImageUpload() {
+    uploader.click();
+}
+
+uploader.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            const imageDataUrl = evt.target.result;
+            updateAllAvatarImages(imageDataUrl);
+            try {
+                localStorage.setItem('doubao_custom_avatar', imageDataUrl);
+            } catch(e) {
+                console.warn('Storage quota exceeded');
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+function updateAllAvatarImages(url) {
+    document.getElementById('doubaoImg').src = url;
+    document.getElementById('inlineImg1').src = url;
+    document.getElementById('inlineImg2').src = url;
+}
+
+// 載入時檢查是否曾上傳自訂頭像
+window.addEventListener('DOMContentLoaded', () => {
+    const savedAvatar = localStorage.getItem('doubao_custom_avatar');
+    if (savedAvatar) {
+        updateAllAvatarImages(savedAvatar);
+    }
+});
+
 
 /* ==================================================
    基本設定
 ================================================== */
 
-
-const startDate =
-    new Date(
-        "2026-08-04T00:00:00"
-    );
-
+const startDate = new Date("2026-08-05T00:00:00");
 
 const MILESTONE_INTERVAL = 50;
-
 const ANNIVERSARY_INTERVAL = 365;
 
-
-let currentDate =
-    new Date();
-
-
-let currentYear =
-    currentDate.getFullYear();
-
-
-let currentMonth =
-    currentDate.getMonth();
+let currentDate = new Date();
+let currentYear = currentDate.getFullYear();
+let currentMonth = currentDate.getMonth();
 
 
 /* ==================================================
@@ -1473,29 +1621,11 @@ let currentMonth =
 ================================================== */
 
 function getFanDay(date) {
-
-    const start =
-        new Date(startDate);
-
-    const target =
-        new Date(date);
-
+    const start = new Date(startDate);
+    const target = new Date(date);
     start.setHours(0,0,0,0);
-
     target.setHours(0,0,0,0);
-
-    return Math.floor(
-        (
-            target - start
-        ) /
-        (
-            1000 *
-            60 *
-            60 *
-            24
-        )
-    ) + 1;
-
+    return Math.floor((target - start) / (1000 * 60 * 60 * 24)) + 1;
 }
 
 
@@ -1504,12 +1634,7 @@ function getFanDay(date) {
 ================================================== */
 
 function isAnniversary(days) {
-
-    return (
-        days > 0 &&
-        days % ANNIVERSARY_INTERVAL === 0
-    );
-
+    return (days > 0 && days % ANNIVERSARY_INTERVAL === 0);
 }
 
 
@@ -1518,29 +1643,11 @@ function isAnniversary(days) {
 ================================================== */
 
 function getNext50Day(days) {
-
-    let next =
-        Math.ceil(
-            days /
-            MILESTONE_INTERVAL
-        )
-        *
-        MILESTONE_INTERVAL;
-
-
-    if (
-        days %
-        MILESTONE_INTERVAL === 0
-    ) {
-
-        next +=
-            MILESTONE_INTERVAL;
-
+    let next = Math.ceil(days / MILESTONE_INTERVAL) * MILESTONE_INTERVAL;
+    if (days % MILESTONE_INTERVAL === 0) {
+        next += MILESTONE_INTERVAL;
     }
-
-
     return next;
-
 }
 
 
@@ -1549,16 +1656,7 @@ function getNext50Day(days) {
 ================================================== */
 
 function getNextAnniversary(days) {
-
-    return (
-        Math.floor(
-            days /
-            ANNIVERSARY_INTERVAL
-        ) + 1
-    )
-    *
-    ANNIVERSARY_INTERVAL;
-
+    return (Math.floor(days / ANNIVERSARY_INTERVAL) + 1) * ANNIVERSARY_INTERVAL;
 }
 
 
@@ -1567,132 +1665,38 @@ function getNextAnniversary(days) {
 ================================================== */
 
 function updateMainInfo() {
+    const today = new Date();
+    const days = getFanDay(today);
 
-    const today =
-        new Date();
+    document.getElementById("fanDay").textContent = days;
 
-    const days =
-        getFanDay(today);
-
-
-    document.getElementById(
-        "fanDay"
-    ).textContent =
-        days;
-
-
-    /*
-       下一個50天
-    */
-
-    const next50 =
-        getNext50Day(days);
-
-
-    /*
-       下一個週年
-    */
-
-    const nextYear =
-        getNextAnniversary(days);
-
+    const next50 = getNext50Day(days);
+    const nextYear = getNextAnniversary(days);
 
     let nextDay;
-
     let nextTitle;
-
     let icon;
 
-
-    if (
-        nextYear <
-        next50
-    ) {
-
-        nextDay =
-            nextYear;
-
-        nextTitle =
-            "第 " +
-            (
-                nextYear /
-                ANNIVERSARY_INTERVAL
-            ) +
-            " 週年";
-
+    if (nextYear < next50) {
+        nextDay = nextYear;
+        nextTitle = "第 " + (nextYear / ANNIVERSARY_INTERVAL) + " 週年";
         icon = "🎂";
-
-    }
-
-    else {
-
-        nextDay =
-            next50;
-
-        nextTitle =
-            "第 " +
-            next50 +
-            " 天";
-
+    } else {
+        nextDay = next50;
+        nextTitle = "第 " + next50 + " 天";
         icon = "💗";
-
     }
 
+    const remaining = nextDay - days;
 
-    const remaining =
-        nextDay - days;
+    document.getElementById("nextIcon").textContent = icon;
+    document.getElementById("nextTitle").textContent = nextTitle;
+    document.getElementById("remainingDays").textContent =
+        remaining === 0 ? "就是今天！" : "還有 " + remaining + " 天";
 
-
-    document.getElementById(
-        "nextIcon"
-    ).textContent =
-        icon;
-
-
-    document.getElementById(
-        "nextTitle"
-    ).textContent =
-        nextTitle;
-
-
-    document.getElementById(
-        "remainingDays"
-    ).textContent =
-
-        remaining === 0
-        ? "就是今天！"
-        : "還有 " + remaining + " 天";
-
-
-    /*
-       最近50天
-    */
-
-    document.getElementById(
-        "milestone50"
-    ).textContent =
-        next50;
-
-
-    /*
-       再下一個50天
-    */
-
-    document.getElementById(
-        "milestone100"
-    ).textContent =
-        next50 + 50;
-
-
-    /*
-       下一個週年
-    */
-
-    document.getElementById(
-        "nextYear"
-    ).textContent =
-        nextYear;
-
+    document.getElementById("milestone50").textContent = next50;
+    document.getElementById("milestone100").textContent = next50 + 50;
+    document.getElementById("nextYear").textContent = nextYear;
 }
 
 
@@ -1701,452 +1705,105 @@ function updateMainInfo() {
 ================================================== */
 
 function renderCalendar() {
-
-
-    const calendar =
-        document.getElementById(
-            "calendar"
-        );
-
-
+    const calendar = document.getElementById("calendar");
     calendar.innerHTML = "";
 
+    document.getElementById("monthTitle").textContent = currentYear + " 年 " + (currentMonth + 1) + " 月";
 
-    /*
-       月份標題
-    */
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const today = new Date();
+    today.setHours(0,0,0,0);
 
-    document.getElementById(
-        "monthTitle"
-    ).textContent =
-
-        currentYear +
-        " 年 " +
-        (
-            currentMonth + 1
-        ) +
-        " 月";
-
-
-    /*
-       當月第一天星期
-    */
-
-    const firstDay =
-        new Date(
-            currentYear,
-            currentMonth,
-            1
-        ).getDay();
-
-
-    /*
-       當月天數
-    */
-
-    const daysInMonth =
-        new Date(
-            currentYear,
-            currentMonth + 1,
-            0
-        ).getDate();
-
-
-    /*
-       今天
-    */
-
-    const today =
-        new Date();
-
-
-    today.setHours(
-        0,0,0,0
-    );
-
-
-    /*
-       空白格
-    */
-
-    for (
-        let i = 0;
-        i < firstDay;
-        i++
-    ) {
-
-        const empty =
-            document.createElement(
-                "div"
-            );
-
-        empty.className =
-            "day empty";
-
-        calendar.appendChild(
-            empty
-        );
-
+    for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement("div");
+        empty.className = "day empty";
+        calendar.appendChild(empty);
     }
 
+    for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(currentYear, currentMonth, day);
+        date.setHours(0,0,0,0);
 
-    /*
-       每一天
-    */
+        const fanDay = getFanDay(date);
+        const cell = document.createElement("div");
+        cell.className = "day";
 
-    for (
-        let day = 1;
-        day <= daysInMonth;
-        day++
-    ) {
-
-
-        const date =
-            new Date(
-                currentYear,
-                currentMonth,
-                day
-            );
-
-
-        date.setHours(
-            0,0,0,0
-        );
-
-
-        const fanDay =
-            getFanDay(date);
-
-
-        const cell =
-            document.createElement(
-                "div"
-            );
-
-
-        cell.className =
-            "day";
-
-
-        /*
-           今天
-        */
-
-        if (
-            date.getTime() ===
-            today.getTime()
-        ) {
-
-            cell.classList.add(
-                "today"
-            );
-
+        if (date.getTime() === today.getTime()) {
+            cell.classList.add("today");
         }
 
-
-        /*
-           未來
-        */
-
-        if (
-            date > today
-        ) {
-
-            cell.classList.add(
-                "future"
-            );
-
+        if (date > today) {
+            cell.classList.add("future");
         }
 
+        const anniversary = isAnniversary(fanDay);
+        const milestone50 = fanDay > 0 && fanDay % MILESTONE_INTERVAL === 0;
 
-        /*
-           週年
-        */
-
-        const anniversary =
-            isAnniversary(
-                fanDay
-            );
-
-
-        /*
-           50天
-        */
-
-        const milestone50 =
-
-            fanDay > 0 &&
-
-            fanDay %
-            MILESTONE_INTERVAL ===
-            0;
-
-
-        /*
-           週年樣式
-        */
-
-        if (
-            anniversary
-        ) {
-
-            cell.classList.add(
-                "anniversary"
-            );
-
+        if (anniversary) {
+            cell.classList.add("anniversary");
+        } else if (milestone50) {
+            cell.classList.add("milestone");
         }
 
-        /*
-           50天樣式
-        */
+        let content = "<div>" + day + "</div>";
 
-        else if (
-            milestone50
-        ) {
-
-            cell.classList.add(
-                "milestone"
-            );
-
-        }
-
-
-        /*
-           日期內容
-        */
-
-        let content =
-
-            "<div>" +
-            day +
-            "</div>";
-
-
-        /*
-           入粉日之後才顯示粉絲天數
-        */
-
-        if (
-            fanDay >= 1
-        ) {
-
+        if (fanDay >= 1) {
             let symbol = "";
-
-            if (
-                anniversary
-            ) {
-
+            if (anniversary) {
                 symbol = " 🎂";
-
-            }
-
-            else if (
-                milestone50
-            ) {
-
+            } else if (milestone50) {
                 symbol = " 💗";
-
             }
-
-
-            content +=
-
-                "<div class='fan-day-number'>" +
-                fanDay +
-                symbol +
-                "</div>";
-
+            content += "<div class='fan-day-number'>" + fanDay + symbol + "</div>";
         }
 
+        cell.innerHTML = content;
 
-        cell.innerHTML =
-            content;
+        cell.addEventListener("click", () => {
+            showSelectedDate(date, fanDay);
+        });
 
-
-        /*
-           點擊日期
-        */
-
-        cell.addEventListener(
-            "click",
-            () => {
-
-                showSelectedDate(
-                    date,
-                    fanDay
-                );
-
-            }
-        );
-
-
-        calendar.appendChild(
-            cell
-        );
-
+        calendar.appendChild(cell);
     }
-
 }
 
 
 /* ==================================================
-   點擊日期後顯示資訊
+   點擊日期後的資訊
 ================================================== */
 
-function showSelectedDate(
-    date,
-    fanDay
-) {
+function showSelectedDate(date, fanDay) {
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
 
+    document.getElementById("selectedDate").textContent = year + " 年 " + month + " 月 " + day + " 日";
 
-    const year =
-        date.getFullYear();
-
-
-    const month =
-        date.getMonth() + 1;
-
-
-    const day =
-        date.getDate();
-
-
-    document.getElementById(
-        "selectedDate"
-    ).textContent =
-
-        year +
-        " 年 " +
-        month +
-        " 月 " +
-        day +
-        " 日";
-
-
-    /*
-       還沒入粉
-    */
-
-    if (
-        fanDay < 1
-    ) {
-
-        document.getElementById(
-            "selectedMain"
-        ).textContent =
-            "還沒成為粉絲 🐰";
-
-
-        document.getElementById(
-            "selectedSub"
-        ).textContent =
-            "2026 年 8 月 4 日才是我們的第一天 💗";
-
-
+    if (fanDay < 1) {
+        document.getElementById("selectedMain").textContent = "還沒成為粉絲 🐰";
+        document.getElementById("selectedSub").textContent = "2026 年 8 月 5 日才是我們的第一天 💗";
         return;
-
     }
 
-
-    /*
-       週年
-    */
-
-    if (
-        isAnniversary(fanDay)
-    ) {
-
-        const yearCount =
-            fanDay /
-            ANNIVERSARY_INTERVAL;
-
-
-        document.getElementById(
-            "selectedMain"
-        ).textContent =
-
-            "🎂 第 " +
-            yearCount +
-            " 週年！";
-
-
-        document.getElementById(
-            "selectedSub"
-        ).textContent =
-
-            "豆包 × 兔飽飽，一起走過 " +
-            fanDay +
-            " 天 💗";
-
-
+    if (isAnniversary(fanDay)) {
+        const yearCount = fanDay / ANNIVERSARY_INTERVAL;
+        document.getElementById("selectedMain").textContent = "🎂 第 " + yearCount + " 週年！";
+        document.getElementById("selectedSub").textContent = "豆包 × 兔飽飽，一起走過 " + fanDay + " 天 💗";
         return;
-
     }
 
-
-    /*
-       50天
-    */
-
-    if (
-        fanDay %
-        MILESTONE_INTERVAL ===
-        0
-    ) {
-
-        document.getElementById(
-            "selectedMain"
-        ).textContent =
-
-            "💗 粉絲第 " +
-            fanDay +
-            " 天！";
-
-
-        document.getElementById(
-            "selectedSub"
-        ).textContent =
-
-            "又完成一個值得收藏的里程碑啦 ✨";
-
-
+    if (fanDay % MILESTONE_INTERVAL === 0) {
+        document.getElementById("selectedMain").textContent = "💗 粉絲第 " + fanDay + " 天！";
+        document.getElementById("selectedSub").textContent = "又完成一個值得收藏的里程碑啦 ✨";
         return;
-
     }
 
+    const next50 = getNext50Day(fanDay);
+    const remaining = next50 - fanDay;
 
-    /*
-       一般日期
-    */
-
-    const next50 =
-        getNext50Day(fanDay);
-
-
-    const remaining =
-        next50 -
-        fanDay;
-
-
-    document.getElementById(
-        "selectedMain"
-    ).textContent =
-
-        "粉絲第 " +
-        fanDay +
-        " 天 💗";
-
-
-    document.getElementById(
-        "selectedSub"
-    ).textContent =
-
-        "再 " +
-        remaining +
-        " 天，就是第 " +
-        next50 +
-        " 天啦 ✨";
-
+    document.getElementById("selectedMain").textContent = "粉絲第 " + fanDay + " 天 💗";
+    document.getElementById("selectedSub").textContent = "再 " + remaining + " 天，就是第 " + next50 + " 天啦 ✨";
 }
 
 
@@ -2154,39 +1811,20 @@ function showSelectedDate(
    月份切換
 ================================================== */
 
-function changeMonth(
-    offset
-) {
+function changeMonth(offset) {
+    currentMonth += offset;
 
-
-    currentMonth +=
-        offset;
-
-
-    if (
-        currentMonth < 0
-    ) {
-
+    if (currentMonth < 0) {
         currentMonth = 11;
-
         currentYear--;
-
     }
 
-
-    if (
-        currentMonth > 11
-    ) {
-
+    if (currentMonth > 11) {
         currentMonth = 0;
-
         currentYear++;
-
     }
-
 
     renderCalendar();
-
 }
 
 
@@ -2195,36 +1833,19 @@ function changeMonth(
 ================================================== */
 
 updateMainInfo();
-
 renderCalendar();
 
-
-/*
-   啟動時直接顯示今天
-*/
-
-showSelectedDate(
-    new Date(),
-    getFanDay(
-        new Date()
-    )
-);
+showSelectedDate(new Date(), getFanDay(new Date()));
 
 
 /* ==================================================
    每分鐘更新
 ================================================== */
 
-setInterval(
-    () => {
-
-        updateMainInfo();
-
-        renderCalendar();
-
-    },
-    60000
-);
+setInterval(() => {
+    updateMainInfo();
+    renderCalendar();
+}, 60000);
 
 
 /* ==================================================
@@ -2232,88 +1853,26 @@ setInterval(
 ================================================== */
 
 function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    const emojis = ["💗", "💕", "💖", "✨", "🌸"];
 
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = (Math.random() * 100) + "vw";
+    heart.style.bottom = "25px";
+    heart.style.fontSize = (13 + Math.random() * 10) + "px";
 
-    const heart =
-        document.createElement(
-            "div"
-        );
+    document.body.appendChild(heart);
 
-
-    heart.className =
-        "heart";
-
-
-    const emojis = [
-
-        "💗",
-        "💕",
-        "💖",
-        "✨",
-        "🌸"
-
-    ];
-
-
-    heart.textContent =
-
-        emojis[
-            Math.floor(
-                Math.random() *
-                emojis.length
-            )
-        ];
-
-
-    heart.style.left =
-
-        (
-            Math.random() *
-            100
-        ) +
-        "vw";
-
-
-    heart.style.bottom =
-        "25px";
-
-
-    heart.style.fontSize =
-
-        (
-            13 +
-            Math.random() *
-            10
-        ) +
-        "px";
-
-
-    document.body.appendChild(
-        heart
-    );
-
-
-    setTimeout(
-        () => {
-
-            heart.remove();
-
-        },
-        4000
-    );
-
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
 }
 
-
-setInterval(
-    createHeart,
-    6500
-);
-
+setInterval(createHeart, 6500);
 
 </script>
 
 </body>
 
 </html>
-
