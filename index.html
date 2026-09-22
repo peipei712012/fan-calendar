@@ -1266,7 +1266,7 @@ body {
 
             <div class="day-description">
 
-                今天 automation 粉絲第幾天 💕
+                成為兔飽飽天數💕
 
             </div>
 
@@ -1614,6 +1614,11 @@ const BIRTHDAY_MONTH = 9; // JavaScript 月份為 0-11，10 月即為索引 9
 const BIRTHDAY_DAY = 3;   // 3 日
 const BIRTH_YEAR = 2007;  // 豆包出生年份
 
+// 成團日期設定：2026/07/14
+const GROUP_START_YEAR = 2026;
+const GROUP_MONTH = 6;    // 7月為索引 6
+const GROUP_DAY = 14;
+
 const MILESTONE_INTERVAL = 50;
 const ANNIVERSARY_INTERVAL = 365;
 
@@ -1636,7 +1641,7 @@ function getFanDay(date) {
 
 
 /* ==================================================
-   判斷週年與生日
+   判斷週年、成團紀念日與生日
 ================================================== */
 
 function isAnniversary(days) {
@@ -1647,9 +1652,17 @@ function isDoubaoBirthday(date) {
     return date.getMonth() === BIRTHDAY_MONTH && date.getDate() === BIRTHDAY_DAY;
 }
 
+function isGroupAnniversary(date) {
+    return date.getFullYear() >= GROUP_START_YEAR && date.getMonth() === GROUP_MONTH && date.getDate() === GROUP_DAY;
+}
+
+function getGroupAnniversaryYears(date) {
+    return date.getFullYear() - GROUP_START_YEAR;
+}
+
 
 /* ==================================================
-   下一個里程碑與生日計算
+   下一個里程碑與生日、成團紀念日計算
 ================================================== */
 
 function getNext50Day(days) {
@@ -1683,6 +1696,25 @@ function getNextBirthdayInfo(today) {
     };
 }
 
+// 計算距離下一次成團紀念日的天數
+function getNextGroupAnniversaryInfo(today) {
+    let targetYear = today.getFullYear();
+    let gDay = new Date(targetYear, GROUP_MONTH, GROUP_DAY);
+    gDay.setHours(0,0,0,0);
+    
+    if (today > gDay) {
+        gDay.setFullYear(targetYear + 1);
+    }
+    
+    const diffDays = Math.ceil((gDay - today) / (1000 * 60 * 60 * 24));
+    const years = gDay.getFullYear() - GROUP_START_YEAR;
+    return {
+        date: gDay,
+        remainingDays: diffDays,
+        years: years
+    };
+}
+
 
 /* ==================================================
    更新頂部資訊
@@ -1698,6 +1730,7 @@ function updateMainInfo() {
     const next50 = getNext50Day(days);
     const nextYear = getNextAnniversary(days);
     const birthdayInfo = getNextBirthdayInfo(today);
+    const groupInfo = getNextGroupAnniversaryInfo(today);
 
     // 計算下一個 50 天與週年對應的剩餘日
     const remaining50 = next50 - days;
@@ -1707,7 +1740,7 @@ function updateMainInfo() {
     let nextTitle = "第 " + next50 + " 天";
     let icon = "💗";
 
-    // 比對三者（50天、週年、生日）誰最先到來
+    // 比對四者（50天、粉絲週年、生日、成團紀念日）誰最先到來
     if (remainingAnniversary < remaining) {
         remaining = remainingAnniversary;
         nextTitle = "第 " + (nextYear / ANNIVERSARY_INTERVAL) + " 週年";
@@ -1718,6 +1751,12 @@ function updateMainInfo() {
         remaining = birthdayInfo.remainingDays;
         nextTitle = "豆包生日 🎂";
         icon = "🎂";
+    }
+
+    if (groupInfo.remainingDays < remaining) {
+        remaining = groupInfo.remainingDays;
+        nextTitle = groupInfo.years === 0 ? "成團紀念日 🎉" : "成團 " + groupInfo.years + " 週年 🎉";
+        icon = "🎉";
     }
 
     document.getElementById("nextIcon").textContent = icon;
@@ -1771,8 +1810,9 @@ function renderCalendar() {
         const anniversary = isAnniversary(fanDay);
         const milestone50 = fanDay > 0 && fanDay % MILESTONE_INTERVAL === 0;
         const birthday = isDoubaoBirthday(date);
+        const groupAnniversary = isGroupAnniversary(date);
 
-        if (birthday) {
+        if (birthday || groupAnniversary) {
             cell.classList.add("birthday");
         } else if (anniversary) {
             cell.classList.add("anniversary");
@@ -1784,6 +1824,10 @@ function renderCalendar() {
 
         if (birthday) {
             content += "<div class='fan-day-number'>豆包生日 🎂</div>";
+        } else if (groupAnniversary) {
+            const years = getGroupAnniversaryYears(date);
+            const labelText = years === 0 ? "成團紀念日 🎉" : "成團 " + years + " 週年 🎉";
+            content += "<div class='fan-day-number'>" + labelText + "</div>";
         } else if (fanDay >= 1) {
             let symbol = "";
             if (anniversary) {
@@ -1816,11 +1860,23 @@ function showSelectedDate(date, fanDay) {
 
     document.getElementById("selectedDate").textContent = year + " 年 " + month + " 月 " + day + " 日";
 
-    // 優先判斷是否為生日
+    // 優先判斷是否為生日與成團紀念日
     if (isDoubaoBirthday(date)) {
         const age = year - BIRTH_YEAR;
         document.getElementById("selectedMain").textContent = "🎂 豆包生日快樂！";
         document.getElementById("selectedSub").textContent = "今天是豆包的 " + age + " 歲生日 ✨ 陪伴是最長情的告白 💗";
+        return;
+    }
+
+    if (isGroupAnniversary(date)) {
+        const years = getGroupAnniversaryYears(date);
+        if (years === 0) {
+            document.getElementById("selectedMain").textContent = "🎉 成團紀念日！";
+            document.getElementById("selectedSub").textContent = "今天是 2026/7/14 成團的第一天 ✨";
+        } else {
+            document.getElementById("selectedMain").textContent = "🎉 成團 " + years + " 週年！";
+            document.getElementById("selectedSub").textContent = "恭喜成團滿 " + years + " 年啦 ✨ 一起走得更遠 💗";
+        }
         return;
     }
 
@@ -1899,7 +1955,7 @@ setInterval(() => {
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
-    const emojis = ["💗", "💕", "💖", "✨", "🌸", "🎂"];
+    const emojis = ["💗", "💕", "💖", "✨", "🌸", "🎂", "🎉"];
 
     heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
     heart.style.left = Math.random() * 100 + "vw";
