@@ -751,7 +751,7 @@ body {
 
 
 /* ==================================================
-   粉絲日
+   粉絲日與自訂紀念日樣式
 ================================================== */
 
 .fan-day-number {
@@ -762,11 +762,37 @@ body {
 
     color: #aaa0ad;
 
+    text-align: center;
+
+    line-height: 1.1;
+
+    word-break: break-all;
+
+    max-width: 90%;
+
 }
 
 .day.future .fan-day-number {
 
     color: #d6d0d7;
+
+}
+
+.day.custom-event {
+
+    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+
+    box-shadow: inset 0 0 0 2px #90caf9;
+
+    font-weight: 900;
+
+}
+
+.day.custom-event .fan-day-number {
+
+    color: #42a5f5;
+
+    font-weight: 900;
 
 }
 
@@ -844,21 +870,6 @@ body {
 
 }
 
-.day.anniversary::after,
-.day.birthday::after {
-
-    content: "🎂";
-
-    position: absolute;
-
-    right: 3px;
-
-    top: 1px;
-
-    font-size: 9px;
-
-}
-
 
 /* ==================================================
    圖例
@@ -932,6 +943,14 @@ body {
 
 }
 
+.legend-custom {
+
+    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+
+    border: 1px solid #90caf9;
+
+}
+
 
 /* ==================================================
    日期資訊
@@ -983,6 +1002,36 @@ body {
     font-size: 11px;
 
     color: #9a8c9d;
+
+}
+
+.edit-event-btn {
+
+    margin-top: 8px;
+
+    padding: 5px 14px;
+
+    border-radius: 12px;
+
+    border: none;
+
+    background: #ed75a7;
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 8px rgba(237,117,167,0.3);
+
+}
+
+.edit-event-btn:active {
+
+    transform: scale(0.95);
 
 }
 
@@ -1046,6 +1095,213 @@ body {
 
 
 /* ==================================================
+   新增/編輯紀念日 彈出視窗 (Modal)
+================================================== */
+
+.modal-overlay {
+
+    position: fixed;
+
+    top: 0; left: 0; right: 0; bottom: 0;
+
+    background: rgba(0,0,0,0.4);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 1000;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.2s ease;
+
+}
+
+.modal-overlay.active {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+}
+
+.modal {
+
+    background: #ffffff;
+
+    width: 88%;
+
+    max-width: 380px;
+
+    border-radius: 24px;
+
+    padding: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+    transform: scale(0.9);
+
+    transition: transform 0.2s ease;
+
+}
+
+.modal-overlay.active .modal {
+
+    transform: scale(1);
+
+}
+
+.modal-title {
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    color: #554957;
+
+    margin-bottom: 12px;
+
+    text-align: center;
+
+}
+
+.modal-input-group {
+
+    margin-bottom: 12px;
+
+    text-align: left;
+
+}
+
+.modal-input-group label {
+
+    font-size: 11px;
+
+    color: #94768a;
+
+    display: block;
+
+    margin-bottom: 4px;
+
+}
+
+.modal-input {
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2d9e5;
+
+    font-size: 13px;
+
+    outline: none;
+
+}
+
+.modal-input:focus {
+
+    border-color: #ed75a7;
+
+}
+
+.emoji-selector {
+
+    display: flex;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    padding: 4px 0;
+
+}
+
+.emoji-option {
+
+    font-size: 20px;
+
+    padding: 6px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background: #f8f1f8;
+
+    border: 1px solid transparent;
+
+}
+
+.emoji-option.selected {
+
+    background: #ffe0ec;
+
+    border-color: #ed75a7;
+
+}
+
+.modal-buttons {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+}
+
+.btn-modal {
+
+    flex: 1;
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    border: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+.btn-primary {
+
+    background: #ed75a7;
+
+    color: white;
+
+}
+
+.btn-danger {
+
+    background: #ff6b6b;
+
+    color: white;
+
+}
+
+.btn-secondary {
+
+    background: #efeaf1;
+
+    color: #655768;
+
+}
+
+
+/* ==================================================
    底部
 ================================================== */
 
@@ -1101,6 +1357,7 @@ body {
     z-index: 100;
 
     animation:
+
         floatUp 4s linear forwards;
 
 }
@@ -1110,7 +1367,9 @@ body {
     0% {
 
         transform:
+
             translateY(0)
+
             scale(.8);
 
         opacity: 0;
@@ -1126,7 +1385,9 @@ body {
     100% {
 
         transform:
+
             translateY(-180px)
+
             scale(1.25);
 
         opacity: 0;
@@ -1402,9 +1663,7 @@ body {
 
             <div class="legend-item">
 
-                <div
-                    class="legend-dot legend-today">
-                </div>
+                <div class="legend-dot legend-today"></div>
 
                 今天
 
@@ -1413,9 +1672,7 @@ body {
 
             <div class="legend-item">
 
-                <div
-                    class="legend-dot legend-milestone">
-                </div>
+                <div class="legend-dot legend-milestone"></div>
 
                 50天
 
@@ -1424,11 +1681,17 @@ body {
 
             <div class="legend-item">
 
-                <div
-                    class="legend-dot legend-year">
-                </div>
+                <div class="legend-dot legend-year"></div>
 
-                週年 / 生日
+                週年/生日
+
+            </div>
+
+            <div class="legend-item">
+
+                <div class="legend-dot legend-custom"></div>
+
+                自訂紀念日
 
             </div>
 
@@ -1466,6 +1729,10 @@ body {
             再一起走 49 天，就是第 50 天啦 ✨
 
         </div>
+
+        <button class="edit-event-btn" id="editEventBtn" onclick="openEventModal()">
+            ✨ 編輯這天的紀念日
+        </button>
 
     </section>
 
@@ -1561,7 +1828,111 @@ body {
 </div>
 
 
+<!-- =========================================
+     新增/編輯紀念日 Modal
+========================================== -->
+
+<div class="modal-overlay" id="eventModal">
+
+    <div class="modal">
+
+        <div class="modal-title" id="modalTitle">設定紀念日</div>
+
+        <div class="modal-input-group">
+
+            <label>紀念日名稱：</label>
+
+            <input type="text" id="eventTitleInput" class="modal-input" placeholder="例如：第一次看演唱會、約會日...">
+
+        </div>
+
+        <div class="modal-input-group">
+
+            <label>選擇圖示 (Emoji)：</label>
+
+            <div class="emoji-selector" id="emojiSelector">
+
+                <span class="emoji-option selected" onclick="selectEmoji(this, '💗')">💗</span>
+
+                <span class="emoji-option" onclick="selectEmoji(this, '🎉')">🎉</span>
+
+                <span class="emoji-option" onclick="selectEmoji(this, '🎂')">🎂</span>
+
+                <span class="emoji-option" onclick="selectEmoji(this, '✈️')">✈️</span>
+
+                <span class="emoji-option" onclick="selectEmoji(this, '💍')">💍</span>
+
+                <span class="emoji-option" onclick="selectEmoji(this, '🎬')">🎬</span>
+
+                <span class="emoji-option" onclick="selectEmoji(this, '🌸')">🌸</span>
+
+            </div>
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button class="btn-modal btn-danger" id="deleteBtn" style="display:none;" onclick="deleteCustomEvent()">刪除</button>
+
+            <button class="btn-modal btn-secondary" onclick="closeEventModal()">取消</button>
+
+            <button class="btn-modal btn-primary" onclick="saveCustomEvent()">儲存</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <script>
+
+/* ==================================================
+   基本設定與自訂紀念日儲存 (LocalStorage)
+================================================== */
+
+const startDate = new Date("2026-08-05T00:00:00");
+const BIRTHDAY_MONTH = 11; // 12 月索引為 11
+const BIRTHDAY_DAY = 3;    // 3 日
+const BIRTH_YEAR = 2007;   // 豆包出生年份：2007/12/3
+
+const GROUP_START_YEAR = 2026;
+const GROUP_MONTH = 6;     // 7月索引為 6
+const GROUP_DAY = 14;
+
+const MILESTONE_INTERVAL = 50;
+const ANNIVERSARY_INTERVAL = 365;
+
+let currentDate = new Date();
+let currentYear = currentDate.getFullYear();
+let currentMonth = currentDate.getMonth();
+
+// 存放選取的日期 (YYYY-MM-DD)
+let activeSelectedDateKey = null;
+let selectedEmoji = '💗';
+
+// 讀取本地自訂紀念日列表 { "YYYY-MM-DD": { title: "...", emoji: "..." } }
+let customEvents = {};
+
+function loadCustomEvents() {
+    try {
+        const saved = localStorage.getItem('doubao_custom_events');
+        if (saved) {
+            customEvents = JSON.parse(saved);
+        }
+    } catch(e) {
+        console.warn('Unable to load custom events');
+    }
+}
+
+function saveCustomEventsToStorage() {
+    try {
+        localStorage.setItem('doubao_custom_events', JSON.stringify(customEvents));
+    } catch(e) {
+        console.warn('Unable to save custom events');
+    }
+}
+
 
 /* ==================================================
    圖片上傳與儲存邏輯
@@ -1596,40 +1967,17 @@ function updateAllAvatarImages(url) {
     document.getElementById('inlineImg2').src = url;
 }
 
-// 載入時檢查是否曾上傳自訂頭像
-window.addEventListener('DOMContentLoaded', () => {
-    const savedAvatar = localStorage.getItem('doubao_custom_avatar');
-    if (savedAvatar) {
-        updateAllAvatarImages(savedAvatar);
-    }
-});
-
 
 /* ==================================================
-   基本設定
+   日期工具函數
 ================================================== */
 
-const startDate = new Date("2026-08-05T00:00:00");
-const BIRTHDAY_MONTH = 11; // JavaScript 月份為 0-11，12 月即為索引 11
-const BIRTHDAY_DAY = 3;    // 3 日
-const BIRTH_YEAR = 2007;   // 豆包出生年份：2007/12/3
-
-// 成團日期設定：2026/07/14
-const GROUP_START_YEAR = 2026;
-const GROUP_MONTH = 6;    // 7月為索引 6
-const GROUP_DAY = 14;
-
-const MILESTONE_INTERVAL = 50;
-const ANNIVERSARY_INTERVAL = 365;
-
-let currentDate = new Date();
-let currentYear = currentDate.getFullYear();
-let currentMonth = currentDate.getMonth();
-
-
-/* ==================================================
-   計算粉絲天數
-================================================== */
+function formatDateKey(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+}
 
 function getFanDay(date) {
     const start = new Date(startDate);
@@ -1638,11 +1986,6 @@ function getFanDay(date) {
     target.setHours(0,0,0,0);
     return Math.floor((target - start) / (1000 * 60 * 60 * 24)) + 1;
 }
-
-
-/* ==================================================
-   判斷週年、成團紀念日與生日
-================================================== */
 
 function isAnniversary(days) {
     return (days > 0 && days % ANNIVERSARY_INTERVAL === 0);
@@ -1662,7 +2005,7 @@ function getGroupAnniversaryYears(date) {
 
 
 /* ==================================================
-   下一個里程碑與生日、成團紀念日計算
+   下一個紀念日與倒數計算
 ================================================== */
 
 function getNext50Day(days) {
@@ -1677,13 +2020,11 @@ function getNextAnniversary(days) {
     return (Math.floor(days / ANNIVERSARY_INTERVAL) + 1) * ANNIVERSARY_INTERVAL;
 }
 
-// 計算距離下一次生日的天數
 function getNextBirthdayInfo(today) {
     let targetYear = today.getFullYear();
     let bday = new Date(targetYear, BIRTHDAY_MONTH, BIRTHDAY_DAY);
     bday.setHours(0,0,0,0);
     
-    // 如果今年的生日已經過了，計算下一年的生日
     if (today > bday) {
         bday.setFullYear(targetYear + 1);
     }
@@ -1696,7 +2037,6 @@ function getNextBirthdayInfo(today) {
     };
 }
 
-// 計算距離下一次成團紀念日的天數
 function getNextGroupAnniversaryInfo(today) {
     let targetYear = today.getFullYear();
     let gDay = new Date(targetYear, GROUP_MONTH, GROUP_DAY);
@@ -1715,6 +2055,33 @@ function getNextGroupAnniversaryInfo(today) {
     };
 }
 
+// 尋找下一個自訂紀念日
+function getNextCustomEventInfo(today) {
+    let minDays = Infinity;
+    let closestEvent = null;
+
+    Object.keys(customEvents).forEach(key => {
+        const [y, m, d] = key.split('-').map(Number);
+        const eventDate = new Date(y, m - 1, d);
+        eventDate.setHours(0,0,0,0);
+
+        if (eventDate >= today) {
+            const diffDays = Math.ceil((eventDate - today) / (1000 * 60 * 60 * 24));
+            if (diffDays < minDays) {
+                minDays = diffDays;
+                closestEvent = {
+                    date: eventDate,
+                    remainingDays: diffDays,
+                    title: customEvents[key].title,
+                    emoji: customEvents[key].emoji
+                };
+            }
+        }
+    });
+
+    return closestEvent;
+}
+
 
 /* ==================================================
    更新頂部資訊
@@ -1731,8 +2098,8 @@ function updateMainInfo() {
     const nextYear = getNextAnniversary(days);
     const birthdayInfo = getNextBirthdayInfo(today);
     const groupInfo = getNextGroupAnniversaryInfo(today);
+    const customInfo = getNextCustomEventInfo(today);
 
-    // 計算下一個 50 天與週年對應的剩餘日
     const remaining50 = next50 - days;
     const remainingAnniversary = nextYear - days;
 
@@ -1740,7 +2107,6 @@ function updateMainInfo() {
     let nextTitle = "第 " + next50 + " 天";
     let icon = "💗";
 
-    // 比對四者（50天、粉絲週年、生日、成團紀念日）誰最先到來
     if (remainingAnniversary < remaining) {
         remaining = remainingAnniversary;
         nextTitle = "第 " + (nextYear / ANNIVERSARY_INTERVAL) + " 週年";
@@ -1759,6 +2125,12 @@ function updateMainInfo() {
         icon = "🎉";
     }
 
+    if (customInfo && customInfo.remainingDays < remaining) {
+        remaining = customInfo.remainingDays;
+        nextTitle = customInfo.title + " " + customInfo.emoji;
+        icon = customInfo.emoji;
+    }
+
     document.getElementById("nextIcon").textContent = icon;
     document.getElementById("nextTitle").textContent = nextTitle;
     document.getElementById("remainingDays").textContent =
@@ -1771,7 +2143,7 @@ function updateMainInfo() {
 
 
 /* ==================================================
-   月曆
+   月曆渲染
 ================================================== */
 
 function renderCalendar() {
@@ -1794,6 +2166,7 @@ function renderCalendar() {
     for (let day = 1; day <= daysInMonth; day++) {
         const date = new Date(currentYear, currentMonth, day);
         date.setHours(0,0,0,0);
+        const dateKey = formatDateKey(date);
 
         const fanDay = getFanDay(date);
         const cell = document.createElement("div");
@@ -1811,8 +2184,11 @@ function renderCalendar() {
         const milestone50 = fanDay > 0 && fanDay % MILESTONE_INTERVAL === 0;
         const birthday = isDoubaoBirthday(date);
         const groupAnniversary = isGroupAnniversary(date);
+        const hasCustomEvent = customEvents[dateKey];
 
-        if (birthday || groupAnniversary) {
+        if (hasCustomEvent) {
+            cell.classList.add("custom-event");
+        } else if (birthday || groupAnniversary) {
             cell.classList.add("birthday");
         } else if (anniversary) {
             cell.classList.add("anniversary");
@@ -1822,7 +2198,9 @@ function renderCalendar() {
 
         let content = "<div>" + day + "</div>";
 
-        if (birthday) {
+        if (hasCustomEvent) {
+            content += `<div class='fan-day-number'>${customEvents[dateKey].title} ${customEvents[dateKey].emoji}</div>`;
+        } else if (birthday) {
             content += "<div class='fan-day-number'>豆包生日 🎂</div>";
         } else if (groupAnniversary) {
             const years = getGroupAnniversaryYears(date);
@@ -1850,17 +2228,27 @@ function renderCalendar() {
 
 
 /* ==================================================
-   點擊日期後的資訊
+   點擊日期後的資訊展示
 ================================================== */
 
 function showSelectedDate(date, fanDay) {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
+    const dateKey = formatDateKey(date);
+
+    activeSelectedDateKey = dateKey;
 
     document.getElementById("selectedDate").textContent = year + " 年 " + month + " 月 " + day + " 日";
 
-    // 優先判斷是否為生日與成團紀念日
+    // 自訂紀念日優先顯示
+    if (customEvents[dateKey]) {
+        const ev = customEvents[dateKey];
+        document.getElementById("selectedMain").textContent = `${ev.emoji} ${ev.title}`;
+        document.getElementById("selectedSub").textContent = `這是你自訂的專屬紀念日喔 ✨`;
+        return;
+    }
+
     if (isDoubaoBirthday(date)) {
         const age = year - BIRTH_YEAR;
         document.getElementById("selectedMain").textContent = "🎂 豆包生日快樂！";
@@ -1908,6 +2296,86 @@ function showSelectedDate(date, fanDay) {
 
 
 /* ==================================================
+   新增 / 編輯紀念日彈出視窗 (Modal)
+================================================== */
+
+function openEventModal() {
+    if (!activeSelectedDateKey) return;
+
+    document.getElementById('modalTitle').textContent = `設定 ${activeSelectedDateKey} 紀念日`;
+    
+    if (customEvents[activeSelectedDateKey]) {
+        const ev = customEvents[activeSelectedDateKey];
+        document.getElementById('eventTitleInput').value = ev.title;
+        selectedEmoji = ev.emoji;
+        document.getElementById('deleteBtn').style.display = 'block';
+    } else {
+        document.getElementById('eventTitleInput').value = '';
+        selectedEmoji = '💗';
+        document.getElementById('deleteBtn').style.display = 'none';
+    }
+
+    // 更新 Emoji 選取狀態
+    const options = document.querySelectorAll('.emoji-option');
+    options.forEach(opt => {
+        if (opt.textContent === selectedEmoji) {
+            opt.classList.add('selected');
+        } else {
+            opt.classList.remove('selected');
+        }
+    });
+
+    document.getElementById('eventModal').classList.add('active');
+}
+
+function closeEventModal() {
+    document.getElementById('eventModal').classList.remove('active');
+}
+
+function selectEmoji(el, emoji) {
+    document.querySelectorAll('.emoji-option').forEach(opt => opt.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedEmoji = emoji;
+}
+
+function saveCustomEvent() {
+    const title = document.getElementById('eventTitleInput').value.trim();
+    if (!title) {
+        alert("請輸入紀念日名稱喔！");
+        return;
+    }
+
+    customEvents[activeSelectedDateKey] = {
+        title: title,
+        emoji: selectedEmoji
+    };
+
+    saveCustomEventsToStorage();
+    closeEventModal();
+    updateMainInfo();
+    renderCalendar();
+
+    const [y, m, d] = activeSelectedDateKey.split('-').map(Number);
+    const selDate = new Date(y, m - 1, d);
+    showSelectedDate(selDate, getFanDay(selDate));
+}
+
+function deleteCustomEvent() {
+    if (confirm("確定要刪除這個紀念日嗎？")) {
+        delete customEvents[activeSelectedDateKey];
+        saveCustomEventsToStorage();
+        closeEventModal();
+        updateMainInfo();
+        renderCalendar();
+
+        const [y, m, d] = activeSelectedDateKey.split('-').map(Number);
+        const selDate = new Date(y, m - 1, d);
+        showSelectedDate(selDate, getFanDay(selDate));
+    }
+}
+
+
+/* ==================================================
    月份切換
 ================================================== */
 
@@ -1929,13 +2397,21 @@ function changeMonth(offset) {
 
 
 /* ==================================================
-   啟動
+   初始化啟動
 ================================================== */
 
-updateMainInfo();
-renderCalendar();
+window.addEventListener('DOMContentLoaded', () => {
+    loadCustomEvents();
 
-showSelectedDate(new Date(), getFanDay(new Date()));
+    const savedAvatar = localStorage.getItem('doubao_custom_avatar');
+    if (savedAvatar) {
+        updateAllAvatarImages(savedAvatar);
+    }
+
+    updateMainInfo();
+    renderCalendar();
+    showSelectedDate(new Date(), getFanDay(new Date()));
+});
 
 
 /* ==================================================
@@ -1949,7 +2425,7 @@ setInterval(() => {
 
 
 /* ==================================================
-   飄愛心
+   飄愛心背景動畫
 ================================================== */
 
 function createHeart() {
